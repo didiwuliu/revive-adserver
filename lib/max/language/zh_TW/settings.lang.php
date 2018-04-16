@@ -49,10 +49,6 @@ $GLOBALS['strImagesUrlPrefixSSL'] = "由於安全原因無法編輯所有設定�
 
 // Global
 $GLOBALS['strChooseSection'] = "選擇章節";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "無法修改配置文件";
 $GLOBALS['strUnableToWritePrefs'] = "無法向數據庫提交屬性更改 ";
 $GLOBALS['strImageDirLockedDetected'] = "<b>圖片文件夾</b>不可寫<br>在修改文件夾權限之前無法修改或創建相關文件夾。";
@@ -151,8 +147,6 @@ $GLOBALS['strDeliveryFilenamesFrontController'] = "字體控制器";
 $GLOBALS['strDeliveryFilenamesFlash'] = "包括Flash（可以使用絕對路徑)";
 $GLOBALS['strDeliveryCaching'] = "全局發送緩存設置";
 $GLOBALS['strDeliveryCacheLimit'] = "緩存刷新頻率（秒)";
-$GLOBALS['strDeliveryAcls'] = "在分發時評估廣告的分發";
-$GLOBALS['strDeliveryObfuscate'] = "混淆通道時廣告";
 $GLOBALS['strDeliveryExecPhp'] = "可在廣告中使用PHP代碼（可能存在安全隱患)";
 $GLOBALS['strDeliveryCtDelimiter'] = "第三方廣告跟蹤分隔符";
 $GLOBALS['strP3PSettings'] = "P3P隱私策略的全局設置";
@@ -167,7 +161,6 @@ $GLOBALS['uiEnabled'] = "啟用用戶界面";
 $GLOBALS['strGeotargetingSettings'] = "地理定位設置";
 $GLOBALS['strGeotargeting'] = "地理定位設置";
 $GLOBALS['strGeotargetingType'] = "地理定位模塊類型";
-$GLOBALS['strGeoShowUnavailable'] = "如果沒有GeoIP數據，則提示地理定位發布條件";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "系統管理";
@@ -212,8 +205,6 @@ $GLOBALS['strBlockAdClicks'] = "如果瀏覽者在在指定時間（秒）內點
 $GLOBALS['strMaintenanceOI'] = "管理運行間隔（分鐘)";
 $GLOBALS['strPrioritySettings'] = "全局優先權設定";
 $GLOBALS['strPriorityInstantUpdate'] = "修改後廣告優先級立即生效";
-$GLOBALS['strDefaultImpConWindow'] = "默認廣告曝光連結窗口（秒)";
-$GLOBALS['strDefaultCliConWindow'] = "默認廣告點擊連結窗口（秒)";
 $GLOBALS['strWarnLimit'] = "郵件提醒剩餘曝光投放數以少於指定的數量";
 $GLOBALS['strWarnLimitDays'] = "在指定日期之前發送一封提醒郵件";
 $GLOBALS['strWarnAdmin'] = "郵件提醒管理員項目即將過期";

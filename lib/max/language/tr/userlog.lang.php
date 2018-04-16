@@ -18,21 +18,20 @@ $GLOBALS['strAdministrator'] = "Yönetici";
 // Audit
 $GLOBALS['strDeleted'] = "Sil";
 $GLOBALS['strDelete'] = "Sil";
+$GLOBALS['strFilters'] = "Filtreler";
 $GLOBALS['strAdvertiser'] = "Reklamveren";
 $GLOBALS['strPublisher'] = "Web sitesi";
 $GLOBALS['strCampaign'] = "Kampanya";
 $GLOBALS['strZone'] = "Alan";
 $GLOBALS['strType'] = "Tip";
 $GLOBALS['strAction'] = "Eylem";
+$GLOBALS['strParameter'] = "Değişkenler";
+$GLOBALS['strValue'] = "Değer";
+$GLOBALS['strAuditResultsNotFound'] = "Seçilen kriterlere uyan etkinlik bulunamadı";
+$GLOBALS['strCollectedAllEvents'] = "Tüm etkinlikler";
 
-$GLOBALS['strUserlog'] = array();
-$GLOBALS['strUserlog'][phpAds_actionAdvertiserReportMailed] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionActiveCampaign] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionAutoClean] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionBatchStatistics] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionDeactivationMailed] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionDeactiveCampaign] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionPriorityCalculation] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionPublisherReportMailed] = "Veritabanını otomatik temizle";
-$GLOBALS['strUserlog'][phpAds_actionWarningMailed] = "Veritabanını otomatik temizle";
+if (!isset($GLOBALS['strUserlog'])) {
+    $GLOBALS['strUserlog'] = array();
+}
+$GLOBALS['strUserlog'][phpAds_actionActiveCampaign] = "{id} kampanyası etkinleştirildi";
 $GLOBALS['strUserlog'][phpAds_actionActivationMailed] = "Veritabanını otomatik temizle";

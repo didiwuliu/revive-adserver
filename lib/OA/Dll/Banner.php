@@ -60,8 +60,6 @@ class OA_Dll_Banner extends OA_Dll
         $bannerData['bannerId']         = $bannerData['bannerid'];
         $bannerData['bannerText']       = $bannerData['bannertext'];
         $bannerData['sessionCapping']   = $bannerData['session_capping'];
-        $bannerData['block']            = $bannerData['block'];
-        $bannerData['alt']              = $bannerData['alt'];
 
         $oBanner->readDataFromArray($bannerData);
         return  true;
@@ -154,7 +152,7 @@ class OA_Dll_Banner extends OA_Dll
                 if (!$this->_validateImage($oBanner->aImage, $this->oImage)) {
                     return false;
                 }
-                $contentType = $this->oImage->contentType == 'swf';
+                $contentType = $this->oImage->contentType;
             } elseif (!isset($oBanner->bannerId)) {
                 $this->raiseError('Field \'aImage\' must not be empty');
                 return false;
@@ -300,6 +298,12 @@ class OA_Dll_Banner extends OA_Dll
 
         if ($this->_validate($oBanner)) {
             $bannerData['storagetype'] = $oBanner->storageType;
+
+            // Set iframe friendliness only for new html banners
+            if (!isset($oBanner->bannerId)) {
+                $bannerData['iframe_friendly'] = $bannerData['storagetype'] === 'html';
+            }
+
             switch($bannerData['storagetype']) {
                 case 'html':
                     $bannerData['contenttype']    = $bannerData['storagetype'];
@@ -477,7 +481,7 @@ class OA_Dll_Banner extends OA_Dll
         if (!$this->checkStructureRequiredStringField($oTargeting,  'logical', 255) ||
             !$this->checkStructureRequiredStringField($oTargeting,  'type', 255) ||
             !$this->checkStructureRequiredStringField($oTargeting,  'comparison', 255) ||
-            !$this->checkStructureNotRequiredStringField($oTargeting,  'data', 255)) {
+            !$this->checkStructureNotRequiredStringField($oTargeting,  'data')) {
 
             return false;
         }

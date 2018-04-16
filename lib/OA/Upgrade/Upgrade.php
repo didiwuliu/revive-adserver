@@ -42,23 +42,23 @@ define('OA_STATUS_CAN_UPGRADE',            10);
 require_once 'MDB2.php';
 require_once 'MDB2/Schema.php';
 
-require_once MAX_PATH.'/lib/OA.php';
-require_once MAX_PATH.'/lib/OA/DB.php';
-require_once MAX_PATH.'/lib/OA/DB/Charset.php';
-require_once MAX_PATH.'/lib/OA/Dal/ApplicationVariables.php';
-require_once(MAX_PATH.'/lib/OA/Upgrade/UpgradeLogger.php');
-require_once(MAX_PATH.'/lib/OA/Upgrade/DB_Upgrade.php');
-require_once(MAX_PATH.'/lib/OA/Upgrade/UpgradeAuditor.php');
-require_once(MAX_PATH.'/lib/OA/Upgrade/DB_UpgradeAuditor.php');
-require_once(MAX_PATH.'/lib/OA/Upgrade/UpgradePackageParser.php');
-require_once(MAX_PATH.'/lib/OA/Upgrade/VersionController.php');
-require_once MAX_PATH.'/lib/OA/Upgrade/EnvironmentManager.php';
-require_once MAX_PATH.'/lib/OA/Upgrade/phpAdsNew.php';
-require_once(MAX_PATH.'/lib/OA/Upgrade/Configuration.php');
-require_once MAX_PATH.'/lib/OA/Upgrade/DB_Integrity.php';
+require_once RV_PATH . '/lib/RV.php';
 
+require_once MAX_PATH . '/lib/OA.php';
+require_once MAX_PATH . '/lib/OA/DB.php';
+require_once MAX_PATH . '/lib/OA/DB/Charset.php';
+require_once MAX_PATH . '/lib/OA/Dal/ApplicationVariables.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/UpgradeLogger.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/DB_Upgrade.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/UpgradeAuditor.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/DB_UpgradeAuditor.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/UpgradePackageParser.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/VersionController.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/EnvironmentManager.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/phpAdsNew.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/Configuration.php';
+require_once MAX_PATH . '/lib/OA/Upgrade/DB_Integrity.php';
 require_once MAX_PATH . '/lib/OA/Preferences.php';
-
 
 /**
  * @package    OpenXUpgrade Class
@@ -75,14 +75,47 @@ class OA_Upgrade
      */
     var $oLogger;
 
+    /**
+     * @var OA_UpgradePackageParser
+     */
     var $oParser;
+
+    /**
+     * @var OA_DB_Upgrade
+     */
     var $oDBUpgrader;
+
+    /**
+     * @var OA_Version_Controller
+     */
     var $oVersioner;
+
+    /**
+     * @var OA_UpgradeAuditor
+     */
     var $oAuditor;
+
+    /**
+     * @var OA_Environment_Manager
+     */
     var $oSystemMgr;
+
+    /**
+     * @var MDB2_Driver_Common
+     */
     var $oDbh;
+
+    /**
+     * @var OA_phpAdsNew
+     */
     var $oPAN;
+
+    /**
+     * @var OA_Upgrade_Config
+     */
     var $oConfiguration;
+
+    /** @var OA_DB_Integrity */
     var $oIntegrity;
 
     var $aPackageList = array();
@@ -202,7 +235,7 @@ class OA_Upgrade
     function initDatabaseParameters($aConfig)
     {
         // Check if we need to ensure to enable MySQL 4 compatibility
-        if (strcasecmp($aConfig['database']['type'], 'mysql') === 0) {
+        if (strcasecmp($aConfig['database']['type'], 'mysql') === 0 || strcasecmp($aConfig['database']['type'], 'mysqli') === 0) {
             $result = $this->oDbh->exec("SET SESSION sql_mode='MYSQL40'");
             $aConfig['database']['mysql4_compatibility'] = !PEAR::isError($result);
         }
@@ -956,9 +989,10 @@ class OA_Upgrade
      * with that of a given schema
      *
      * @param string $version
+     * @param array $aSchema
      * @return boolean
      */
-    function _checkDBIntegrity($version, $aSchema='')
+    function _checkDBIntegrity($version, $aSchema=array())
     {
         if (empty($aSchema))
         {
@@ -986,7 +1020,7 @@ class OA_Upgrade
             return false;
         }
         $this->oLogger->logClear();
-        if (count($this->oIntegrity->aTasksConstructiveAll)>0)
+        if (!empty($this->oIntegrity->aTasksConstructiveAll))
         {
             $this->oLogger->logError('database integrity check detected problems with the database');
             foreach ($this->oIntegrity->aTasksConstructiveAll AS $elem => &$aTasks)
@@ -2611,7 +2645,7 @@ class OA_Upgrade
      */
     function getUpgradePackageList($verPrev, $aVersions=null)
     {
-        $verPrev = OA::stripVersion($verPrev);
+        $verPrev = RV::stripVersion($verPrev);
         $aFiles = array();
         if (is_array($aVersions))
         {

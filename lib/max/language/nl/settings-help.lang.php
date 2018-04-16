@@ -58,7 +58,7 @@ $GLOBALS['phpAds_hlp_gui_header_active_tab_color'] = "U kunt hier een aangepast 
 
 $GLOBALS['phpAds_hlp_gui_header_text_color'] = "U kunt hier een aangepast kleur invoeren die zal worden gebruikt voor de teksten in de header.";
 
-$GLOBALS['phpAds_hlp_content_gzip_compression'] = "\\n	Door GZIP content compressie te gebruiken zal de data, die elke keer als een pagina\\n	van de administratie interface wordt opgevraagd naar uw browser gestuurd wordt, afnemen\\n	Om deze functie te kunnen gebruiken moet minimaal PHP 4.0.5 en de GZIP extentie op uw\\n	server geinstalleerd zijn.\\n.";
+$GLOBALS['phpAds_hlp_content_gzip_compression'] = "\n	Door GZIP content compressie te gebruiken zal de data, die elke keer als een pagina\n	van de administratie interface wordt opgevraagd naar uw browser gestuurd wordt, afnemen\n	Om deze functie te kunnen gebruiken moet minimaal PHP 4.0.5 en de GZIP extentie op uw\n	server geinstalleerd zijn.\n.";
 
 $GLOBALS['phpAds_hlp_language'] = "Selecteer de standaar taal die {$PRODUCT_NAME} moet gebruiken. Deze taalkeuze zal standaard worden gebruikt voor de interface voor de beheerders en adverteerders. Let op: u kunt een andere taal instellen voor elke adverteerder vanuit de beheerdersinterface, en elke adverteerder toestaan zelf een andere taal te kiezen.";
 
@@ -113,7 +113,7 @@ in the database. If you have enabled this option you will be able to see statist
 location of your visitors and how each banner is performing in the different countries.
 This option will only be available to you if you are using verbose statistics.";
 
-$GLOBALS['phpAds_hlp_reverse_lookup'] = "De host name wordt normaal gesproken vastgesteld door de web server, maar in sommige gevallen is deze functie uitgeschakeld. Als u de host name van de bezoeker wilt gebruiken voor delivery limitations en/of als u statistieken wilt bijhouden, en de server geeft deze informatie niet, dan dient u deze optie in te schakelen. Het vaststellen van de host name van de bezoeker kost enige tijd; het zal de uitlevering van banners trager maken.";
+$GLOBALS['phpAds_hlp_reverse_lookup'] = "De host name wordt normaal gesproken vastgesteld door de web server, maar in sommige gevallen is deze functie uitgeschakeld. Als u de host name van de bezoeker wilt gebruiken voor uitleveringsregels en/of als u statistieken wilt bijhouden, en de server geeft deze informatie niet, dan dient u deze optie in te schakelen. Het vaststellen van de host name van de bezoeker kost enige tijd; het zal de uitlevering van banners trager maken.";
 
 $GLOBALS['phpAds_hlp_proxy_lookup'] = "Sommige bezoekers gebruiken een proxy server om verbinding te makne met het internet. In dat geval zal {$PRODUCT_NAME} het IP adres of de host name van de proxy server registreren, in plaats van de bezoeker. Als u deze functie inschakelt, zal {$PRODUCT_NAME} proberen om het IP adres of de host name van de computer van de bezoeker proberen vast te stellen. Als het niet mogelijk is om het exacte adres van de bezoeker vast te stellen, dan zal het adres van de proxy server gebruikt worden. Deze optie staat standaard niet aan, omdat het de uitlevering van banners aanzienlijk zal vertragen.";
 
@@ -127,7 +127,7 @@ $GLOBALS['phpAds_hlp_auto_clean_userlog'] = $GLOBALS['phpAds_hlp_auto_clean_user
 number of weeks specified below this checkbox.";
 
 $GLOBALS['phpAds_hlp_geotracking_type'] = "Geotargeting stelt {$PRODUCT_NAME} in staat om het IP adres van een bezoeker om te zetten naar geografische
-informatie. Op basis van deze informatie kunt u uitleveringsbeperkingen instellen of u kunt deze
+informatie. Op basis van deze informatie kunt u uitleveringsregels instellen of u kunt deze
 informatie opslaan om te zien uit welk land de meeste impressies komen. Als u geotargeting wilt
 inschakelen moet u kiezen welk type database u heeft.
 {$PRODUCT_NAME} ondersteunt momenteel <a href='http://hop.clickbank.net/?phpadsnew/ip2country' target='_blank'></a>
@@ -161,7 +161,7 @@ wel goed door qmail begrepen wordt.";
 
 $GLOBALS['phpAds_hlp_warn_limit'] = "De limiet waarbij {$PRODUCT_NAME} begint waarschuwings-emails te verzenden. Dit is standaard bij 100.";
 
-$GLOBALS['phpAds_hlp_acl'] = "Als u geen gebruik maakt van uitleveringsbeperkingen, dan kunt u deze optie uitschakelen,
+$GLOBALS['phpAds_hlp_acl'] = "Als u geen gebruik maakt van Uitleveringsregels, dan kunt u deze optie uitschakelen,
 dit zal {$PRODUCT_NAME} iets sneller maken.";
 
 $GLOBALS['phpAds_hlp_default_banner_url'] = $GLOBALS['phpAds_hlp_default_banner_target'] = "Als {$PRODUCT_NAME} geen verbinding kan maken met de databaseserver, of geen enkele
@@ -259,17 +259,17 @@ $GLOBALS['phpAds_hlp_default_banner_weight'] = "	Indien u standaard een hoger ge
 $GLOBALS['phpAds_hlp_default_campaign_weight'] = "	Indien u standaard een hoger gewicht wilt geven aan campagnes, dan kunt u hier het
 	gewenste gewicht instellen. Deze optie staat standaard op 1.";
 
-$GLOBALS['phpAds_hlp_gui_show_campaign_info'] = "\\n	Als deze optie aan staat, wordt er extra informatie over elke campagne getoond op de\\n	<i>Campagne overzicht</i> pagina. De extra informatie bevat o.a. het overgebleven aantal\\n	impressies, kliks en conversies, de begindatum en de einddatum en de prioriteits-instellingen.";
+$GLOBALS['phpAds_hlp_gui_show_campaign_info'] = "\n	Als deze optie aan staat, wordt er extra informatie over elke campagne getoond op de\n	<i>Campagne overzicht</i> pagina. De extra informatie bevat o.a. het overgebleven aantal\n	impressies, kliks en conversies, de begindatum en de einddatum en de prioriteits-instellingen.";
 
-$GLOBALS['phpAds_hlp_gui_show_banner_info'] = "\\n	Als deze optie aan staat, wordt er extra informatie over elke banner getoond op de\\n	<i>Banner overzicht</i> pagina. De extra informatie bevat o.a. de doel URL, sleutelwoorden,\\n	grootte en gewicht.\\n.";
+$GLOBALS['phpAds_hlp_gui_show_banner_info'] = "\n	Als deze optie aan staat, wordt er extra informatie over elke banner getoond op de\n	<i>Banner overzicht</i> pagina. De extra informatie bevat o.a. de doel URL, sleutelwoorden,\n	grootte en gewicht.\n.";
 
-$GLOBALS['phpAds_hlp_gui_show_campaign_preview'] = "\\n	Als deze optie aan staat, wordt er een voorbeeld van alle banners getoond op de <i>Banner \\n	overzicht</i> pagina. Als deze optie niet aan staat is het nog steeds mogelijk een een voorbeeld\\n	van een banner te zien, door op de driehoek naast elke banner op de <i>Banner overzicht</i>\\n	pagina te klikken.\\n.";
+$GLOBALS['phpAds_hlp_gui_show_campaign_preview'] = "\n	Als deze optie aan staat, wordt er een voorbeeld van alle banners getoond op de <i>Banner \n	overzicht</i> pagina. Als deze optie niet aan staat is het nog steeds mogelijk een een voorbeeld\n	van een banner te zien, door op de driehoek naast elke banner op de <i>Banner overzicht</i>\n	pagina te klikken.\n.";
 
-$GLOBALS['phpAds_hlp_gui_show_banner_html'] = "\\n	Als deze optie aan staat wordt de HTML banner zelf getoond in plaats van de HTML code. Deze\\n	optie staat standaard uit, omdat de HTML code in sommige gevallen storend kan werken op de\\n	pagina van de administratie interface. Als deze optie uit staat dan is het nog steeds mogelijk\\n	om de werkelijke banner te zien, door te klikken op <i>Toon banner</i> knop naast de HTML\\n	code.\\n.";
+$GLOBALS['phpAds_hlp_gui_show_banner_html'] = "\n	Als deze optie aan staat wordt de HTML banner zelf getoond in plaats van de HTML code. Deze\n	optie staat standaard uit, omdat de HTML code in sommige gevallen storend kan werken op de\n	pagina van de administratie interface. Als deze optie uit staat dan is het nog steeds mogelijk\n	om de werkelijke banner te zien, door te klikken op <i>Toon banner</i> knop naast de HTML\n	code.\n.";
 
-$GLOBALS['phpAds_hlp_gui_show_banner_preview'] = "\\n	Als deze optie aan staat wordt er een voorbeeld van de banner getoond aan de bovenkant van\\n	de <i>Banner eigenschappen</i>, <i>Leveringsopties</i> en <i>Gekoppelde zones</i> pagina's.\\n	Als deze optie uit staat is het nog steeds mogelijk om een voorbeeld te bekijken door te \\n	klikken op de <i>Toon banner</i> knop bovenaan de pagina.\\n.";
+$GLOBALS['phpAds_hlp_gui_show_banner_preview'] = "\n	Als deze optie aan staat wordt er een voorbeeld van de banner getoond aan de bovenkant van\n	de <i>Banner eigenschappen</i>, <i>Leveringsopties</i> en <i>Gekoppelde zones</i> pagina's.\n	Als deze optie uit staat is het nog steeds mogelijk om een voorbeeld te bekijken door te \n	klikken op de <i>Toon banner</i> knop bovenaan de pagina.\n.";
 
-$GLOBALS['phpAds_hlp_gui_hide_inactive'] = "\\n	Als deze optie aan staat worden alle niet-actieve banners, campagnes en adverteerders verborgen\\n	op de <i>Adverteerders & campagnes</i> en <i>Campagne overzicht</i> pagina's. Als deze optie\\n	aan staat is het mogelijk om de verborgen items te tonen door te klikken op de <i>Toon alles</i>\\n	knop onderaan de pagina.\\n.";
+$GLOBALS['phpAds_hlp_gui_hide_inactive'] = "\n	Als deze optie aan staat worden alle niet-actieve banners, campagnes en adverteerders verborgen\n	op de <i>Adverteerders & campagnes</i> en <i>Campagne overzicht</i> pagina's. Als deze optie\n	aan staat is het mogelijk om de verborgen items te tonen door te klikken op de <i>Toon alles</i>\n	knop onderaan de pagina.\n.";
 
 $GLOBALS['phpAds_hlp_gui_show_matching'] = "Als deze optie is ingeschakeld, dan zal de overeenkomende banner worden vertoond op de <i>Gekoppelde banners</i> pagina,
 als gekozen is voor de <i>Campagne selectie</i>methode. Dit stelt u in staat om precies te zien welke banners worden

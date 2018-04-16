@@ -47,10 +47,6 @@ $GLOBALS['strImagesUrlPrefixSSL'] = "URL pamięci plików graficznych (SSL)";
 
 // Global
 $GLOBALS['strChooseSection'] = "Wybierz sekcję";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "Nie można wprowadzić zmian w pliku config";
 $GLOBALS['strUnableToWritePrefs'] = "Nie można wprowadzić preferencji w bazie danych";
 $GLOBALS['strImageDirLockedDetected'] = "Wskazany <b>Folder Obrazów</b> nie jest otwarty do edycji. <b>Zmień uprawnienia w folderze lub utwórz folder, aby kontynuować.";
@@ -166,8 +162,6 @@ $GLOBALS['strDeliveryFilenamesFrontController'] = "Sterownik główny";
 $GLOBALS['strDeliveryFilenamesFlash'] = "Animacja Flash (może być pełny URL)";
 $GLOBALS['strDeliveryCaching'] = "Ustawienia cache banerów";
 $GLOBALS['strDeliveryCacheLimit'] = "Okres czasu pomiędzy aktualizacjami cache banerów (w sekundach)";
-$GLOBALS['strDeliveryAcls'] = "Ewaluacja limitów dostarczania banerów w trakcie ich dostarczania";
-$GLOBALS['strDeliveryObfuscate'] = "Ukryj kanał podczas dostarczania reklam";
 $GLOBALS['strDeliveryExecPhp'] = "Zezwól na wykonywanie kodu PHP w reklamach <br /> (UWAGA: Obniża poziom bezpieczeństwa)";
 $GLOBALS['strDeliveryCtDelimiter'] = "Ogranicznik śledzenia kliknięć strony trzeciej";
 $GLOBALS['strGlobalDefaultBannerUrl'] = "Ogólny domyślny URL banera obrazu";
@@ -183,7 +177,6 @@ $GLOBALS['uiEnabled'] = "Interfejs użytkownika aktywny";
 $GLOBALS['strGeotargetingSettings'] = "Geotargeting";
 $GLOBALS['strGeotargeting'] = "Geotargeting";
 $GLOBALS['strGeotargetingType'] = "Typ modułu Geotargetingu";
-$GLOBALS['strGeoShowUnavailable'] = "Pokaż limity geotargetingu, nawet jeśli dane GeoIP nie są dostępne";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "Inwentarz";
@@ -235,8 +228,6 @@ $GLOBALS['strBlockAdClicks'] = "Nie zliczaj Kliknięć, jeśli odwiedzający kli
 $GLOBALS['strMaintenanceOI'] = "Odstęp między przeprowadzaniem konserwacji (w minutach)";
 $GLOBALS['strPrioritySettings'] = "Ustawienia priorytetów";
 $GLOBALS['strPriorityInstantUpdate'] = "Aktualizuj priorytety reklamy natychmiast po modyfikacjach w interfejsie";
-$GLOBALS['strDefaultImpConWindow'] = "Domyślny okres walidacji Odsłony (w sekundach)";
-$GLOBALS['strDefaultCliConWindow'] = "Domyślny okres walidacji Kliknięcia (w sekundach)";
 $GLOBALS['strAdminEmailHeaders'] = "Dodaj następujące nagłówki do każdego e-maila wysyłanego przez {$PRODUCT_NAME}";
 $GLOBALS['strWarnLimit'] = "Limit Ostrzeżenia - wyślij ostrzeżenie, gdy ilość pozostałych odsłon jest mniejsza niż ta określona tutaj";
 $GLOBALS['strWarnLimitDays'] = "Wyślij ostrzeżenie, gdy ilość dni jest mniejsza niż ta określona tutaj";

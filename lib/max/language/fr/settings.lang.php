@@ -47,10 +47,6 @@ $GLOBALS['strImagesUrlPrefixSSL'] = "URL de stockage des images (SSL)";
 
 // Global
 $GLOBALS['strChooseSection'] = "Choisir la section";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "Impossible d'écrire les modifications dans le fichier de configuration";
 $GLOBALS['strUnableToWritePrefs'] = "Impossible d'appliquer les préférences dans la base de données";
 $GLOBALS['strImageDirLockedDetected'] = "Le <b>dossier images</b> indiqué n'est pas accessible en écriture par le serveur. <br>Vous ne pourrez pas poursuivre tant que vous n'aurez pas changé les permissions ou créé le dossier.";
@@ -165,8 +161,6 @@ $GLOBALS['strDeliveryFilenamesFlash'] = "Inclusion Flash (Peut être une URL com
 $GLOBALS['strDeliveryCaching'] = "Paramètres du cache de distribution des bannières";
 $GLOBALS['strDeliveryCacheLimit'] = "Temps entre les mises à jour du cache des bannières (secondes)";
 $GLOBALS['strDeliveryCacheStore'] = "Type de stockage du cache de distribution des bannières";
-$GLOBALS['strDeliveryAcls'] = "Evaluer les limitations de distribution des bannières au cours de la distribution";
-$GLOBALS['strDeliveryObfuscate'] = "Masquer le canal lors de la distribution des publicités";
 $GLOBALS['strDeliveryExecPhp'] = "Autoriser le code PHP à être exécuté dans les publicités<br />(Attention : risque de sécurité)";
 $GLOBALS['strDeliveryCtDelimiter'] = "Délimiteur de suivi des clics par les tiers";
 $GLOBALS['strGlobalDefaultBannerUrl'] = "URL de l'image de la bannière par défaut générale";
@@ -184,7 +178,6 @@ $GLOBALS['defaultLanguage'] = "Langage par défaut<br />(Chaque utilisateur choi
 $GLOBALS['strGeotargetingSettings'] = "Paramètres de géolocalisation";
 $GLOBALS['strGeotargeting'] = "Paramètres de géolocalisation";
 $GLOBALS['strGeotargetingType'] = "Type du module de géolocalisation";
-$GLOBALS['strGeoShowUnavailable'] = "Afficher les limitations de géolocalisation de distribution même si les données GeoIP sont indisponibles";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "Inventaire";
@@ -236,8 +229,6 @@ $GLOBALS['strBlockAdClicks'] = "Ne pas compter les clics publicitaires si le vis
 $GLOBALS['strMaintenanceOI'] = "Intervalle entre les opérations de maintenance (minutes)";
 $GLOBALS['strPrioritySettings'] = "Paramètres de priorité";
 $GLOBALS['strPriorityInstantUpdate'] = "Mettre à jour les priorités des publicités immédiatement après avoir effectué des changements dans l'IU";
-$GLOBALS['strDefaultImpConWindow'] = "Fenêtre de connexion des impressions publicitaires par défaut (secondes)";
-$GLOBALS['strDefaultCliConWindow'] = "Fenêtre de connexion des clics publicitaires par défaut (secondes)";
 $GLOBALS['strAdminEmailHeaders'] = "Ajouter les en-têtes suivants à tous les e-mails envoyés par {$PRODUCT_NAME}";
 $GLOBALS['strWarnLimit'] = "Envoyer un avertissement quand le nombre d'impressions restantes est inférieur à celui spécifié ici";
 $GLOBALS['strWarnLimitDays'] = "Envoyer un avertissement quand le nombre de jours restants est inférieur à celui spécifié ici";

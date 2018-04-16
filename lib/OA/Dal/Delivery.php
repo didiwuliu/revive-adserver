@@ -26,6 +26,9 @@ if(isset($GLOBALS['_MAX']['FILES'][$file])) {
 ###END_STRIP_DELIVERY
 $GLOBALS['_MAX']['FILES'][$file] = true;
 
+function OA_Dal_Delivery_isValidResult($result) {
+    return is_resource($result) || $result instanceof mysqli_result;
+}
 
 /**
  * The function to retrieve accounts timezones and the default admin's timezone
@@ -48,7 +51,7 @@ function OA_Dal_Delivery_getAccountTZs()
 
     $res = OA_Dal_Delivery_query($query);
 
-    if (is_resource($res) && OA_Dal_Delivery_numRows($res)) {
+    if (OA_Dal_Delivery_isValidResult($res) && OA_Dal_Delivery_numRows($res)) {
         $adminAccountId = (int)OA_Dal_Delivery_result($res, 0, 0);
     } else {
         $adminAccountId = false;
@@ -73,7 +76,7 @@ function OA_Dal_Delivery_getAccountTZs()
         'adminAccountId' => $adminAccountId,
         'aAccounts' => array()
     );
-    if (is_resource($res)) {
+    if (OA_Dal_Delivery_isValidResult($res)) {
         while ($row = OA_Dal_Delivery_fetchAssoc($res)) {
             $accountId = (int)$row['account_id'];
             if ($accountId === $adminAccountId) {
@@ -139,7 +142,7 @@ function OA_Dal_Delivery_getZoneInfo($zoneid) {
             a.agencyid = m.agencyid";
     $rZoneInfo = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rZoneInfo)) {
+    if (!OA_Dal_Delivery_isValidResult($rZoneInfo)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : false;
     }
     $aZoneInfo = OA_Dal_Delivery_fetchAssoc($rZoneInfo);
@@ -162,7 +165,7 @@ function OA_Dal_Delivery_getZoneInfo($zoneid) {
             p.preference_name = 'default_banner_destination_url'";
     $rPreferenceInfo = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rPreferenceInfo)) {
+    if (!OA_Dal_Delivery_isValidResult($rPreferenceInfo)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : false;
     }
     if (OA_Dal_Delivery_numRows($rPreferenceInfo) != 2) {
@@ -248,7 +251,7 @@ function OA_Dal_Delivery_getZoneInfo($zoneid) {
             apa.preference_id = $default_banner_destination_url_id";
     $rDefaultBannerInfo = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rDefaultBannerInfo)) {
+    if (!OA_Dal_Delivery_isValidResult($rDefaultBannerInfo)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : false;
     }
 
@@ -326,7 +329,7 @@ function OA_Dal_Delivery_getPublisherZones($publisherid) {
         z.affiliateid={$publisherid}
     ");
 
-    if (!is_resource($rZones)) {
+    if (!OA_Dal_Delivery_isValidResult($rZones)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : false;
     }
     while ($aZone = OA_Dal_Delivery_fetchAssoc($rZones)) {
@@ -345,12 +348,12 @@ function OA_Dal_Delivery_getPublisherZones($publisherid) {
  * @return array|false
  *               The array containg zone information with nested arrays of linked ads
  *               or false on failure. Note that:
- *                  - Override campaign creatives are in "xAds"
- *                  - Contract campaign creatives are in "ads"
- *                  - Remnant campaign creatives ads are in "lAds"
+ *                  - Override campaign ads are in "xAds"
+ *                  - Contract campaign ads are in "ads"
+ *                  - Remnant campaign ads are in "lAds"
  *                  - Override and Remnant campaign creatives have had
- *                    their priorities calculated on the basis of the campaign and
- *                    creative weights
+ *                    their priorities calculated on the basis of the campaign
+ *                    and creative weights
  */
 function OA_Dal_Delivery_getZoneLinkedAds($zoneid) {
 
@@ -453,7 +456,7 @@ function OA_Dal_Delivery_getZoneLinkedAds($zoneid) {
 //    $query = OA_Dal_Delivery_buildQuery('', '', '');
     $rAds = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rAds)) {
+    if (!OA_Dal_Delivery_isValidResult($rAds)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     }
 
@@ -587,7 +590,7 @@ function OA_Dal_Delivery_getZoneLinkedAdInfos($zoneid) {
 
     $rAds = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rAds)) {
+    if (!OA_Dal_Delivery_isValidResult($rAds)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     }
 
@@ -659,7 +662,7 @@ function OA_Dal_Delivery_getLinkedAdInfos($search, $campaignid = '', $lastpart =
 
     $rAds = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rAds)) {
+    if (!OA_Dal_Delivery_isValidResult($rAds)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     }
 
@@ -731,7 +734,7 @@ function OA_Dal_Delivery_getLinkedAds($search, $campaignid = '', $lastpart = tru
 
     $rAds = OA_Dal_Delivery_query($query);
 
-    if (!is_resource($rAds)) {
+    if (!OA_Dal_Delivery_isValidResult($rAds)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     }
 
@@ -852,7 +855,8 @@ function OA_Dal_Delivery_getAd($ad_id) {
         c.clickwindow AS clickwindow,
         c.viewwindow AS viewwindow,
         m.advertiser_limitation AS advertiser_limitation,
-        m.agencyid AS agency_id
+        m.agencyid AS agency_id,
+        c.status AS campaign_status
     FROM
         ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['banners'])." AS d,
         ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['campaigns'])." AS c,
@@ -865,7 +869,7 @@ function OA_Dal_Delivery_getAd($ad_id) {
         m.clientid = c.clientid
     ";
     $rAd = OA_Dal_Delivery_query($query);
-    if (!is_resource($rAd)) {
+    if (!OA_Dal_Delivery_isValidResult($rAd)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     } else {
         return (OA_Dal_Delivery_fetchAssoc($rAd));
@@ -892,7 +896,7 @@ function OA_Dal_Delivery_getChannelLimitations($channelid) {
             ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['channel'])."
     WHERE
             channelid={$channelid}");
-    if (!is_resource($rLimitation)) {
+    if (!OA_Dal_Delivery_isValidResult($rLimitation)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     }
     $limitations = OA_Dal_Delivery_fetchAssoc($rLimitation);
@@ -917,7 +921,7 @@ function OA_Dal_Delivery_getCreative($filename)
         WHERE
             filename = '".OX_escapeString($filename)."'
     ");
-    if (!is_resource($rCreative)) {
+    if (!OA_Dal_Delivery_isValidResult($rCreative)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     } else {
         $aResult = OA_Dal_Delivery_fetchAssoc($rCreative);
@@ -956,7 +960,7 @@ function OA_Dal_Delivery_getTracker($trackerid)
         WHERE
             t.trackerid={$trackerid}
     ");
-    if (!is_resource($rTracker)) {
+    if (!OA_Dal_Delivery_isValidResult($rTracker)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     } else {
         return (OA_Dal_Delivery_fetchAssoc($rTracker));
@@ -989,7 +993,7 @@ function OA_Dal_Delivery_getTrackerLinkedCreatives($trackerid = null)
           AND b.campaignid = ct.campaignid
           " . ((!empty($trackerid)) ? ' AND t.trackerid='.$trackerid : '') . "
     ");
-    if (!is_resource($rCreatives)) {
+    if (!OA_Dal_Delivery_isValidResult($rCreatives)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     } else {
         $output = array();
@@ -1029,7 +1033,7 @@ function OA_Dal_Delivery_getTrackerVariables($trackerid)
         WHERE
             v.trackerid={$trackerid}
     ");
-    if (!is_resource($rVariables)) {
+    if (!OA_Dal_Delivery_isValidResult($rVariables)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     } else {
         $output = array();
@@ -1055,7 +1059,7 @@ function OA_Dal_Delivery_getMaintenanceInfo()
             ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['application_variable'])."
         WHERE name = 'maintenance_timestamp'
     ");
-    if (!is_resource($result)) {
+    if (!OA_Dal_Delivery_isValidResult($result)) {
         return (defined('OA_DELIVERY_CACHE_FUNCTION_ERROR')) ? OA_DELIVERY_CACHE_FUNCTION_ERROR : null;
     } else {
         $result = OA_Dal_Delivery_fetchAssoc($result);

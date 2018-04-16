@@ -59,41 +59,41 @@ class Test_OA_Environment_Manager extends UnitTestCase
         // Prepare a new OA_Environment_Manager class
         $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
         $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
-        // Set a valid version of PHP
-        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.3.0';
-        // Test critical PHP settings
-        $result = $oEnvironmentManager->_checkCriticalPHP();
-        // Check the results
-        $this->assertEqual($result, OA_ENV_ERROR_PHP_NOERROR);
-        $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
-
-        // Prepare a new OA_Environment_Manager class
-        $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
-        $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
         // Set an invalid version of PHP
         $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.4.19';
         // Test critical PHP settings
         $result = $oEnvironmentManager->_checkCriticalPHP();
         // Check the results
-        $this->assertEqual($result, OA_ENV_ERROR_PHP_VERSION_54);
-        $this->_testValidEnvironmentManagerObject($oEnvironmentManager, array('version'), array());
+        $this->assertEqual($result, OA_ENV_ERROR_PHP_VERSION);
+        $this->_testValidEnvironmentManagerObject($oEnvironmentManager, array(), array('version'));
 
         // Prepare a new OA_Environment_Manager class
         $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
         $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
         // Set an invalid version of PHP
-        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.4.4-14+deb7u8';
+        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.5.0';
         // Test critical PHP settings
         $result = $oEnvironmentManager->_checkCriticalPHP();
         // Check the results
-        $this->assertEqual($result, OA_ENV_ERROR_PHP_VERSION_54);
-        $this->_testValidEnvironmentManagerObject($oEnvironmentManager, array('version'), array());
+        $this->assertEqual($result, OA_ENV_ERROR_PHP_VERSION);
+        $this->_testValidEnvironmentManagerObject($oEnvironmentManager, array(), array('version'));
 
         // Prepare a new OA_Environment_Manager class
         $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
         $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
         // Set an invalid version of PHP
-        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.4.4-14+deb7u9';
+        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.5.9';
+        // Test critical PHP settings
+        $result = $oEnvironmentManager->_checkCriticalPHP();
+        // Check the results
+        $this->assertEqual($result, OA_ENV_ERROR_PHP_VERSION);
+        $this->_testValidEnvironmentManagerObject($oEnvironmentManager, array(), array('version'));
+
+        // Prepare a new OA_Environment_Manager class
+        $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
+        $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
+        // Set a valid version of PHP
+        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.6.0';
         // Test critical PHP settings
         $result = $oEnvironmentManager->_checkCriticalPHP();
         // Check the results
@@ -103,24 +103,13 @@ class Test_OA_Environment_Manager extends UnitTestCase
         // Prepare a new OA_Environment_Manager class
         $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
         $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
-        // Set an invalid version of PHP
-        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.4.4-14+deb7u14';
+        // Set a valid version of PHP
+        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '7.1.2';
         // Test critical PHP settings
         $result = $oEnvironmentManager->_checkCriticalPHP();
         // Check the results
         $this->assertEqual($result, OA_ENV_ERROR_PHP_NOERROR);
         $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
-
-        // Prepare a new OA_Environment_Manager class
-        $oEnvironmentManager = &$this->_getValidEnvironmentManagerObject();
-        $this->_testValidEnvironmentManagerObject($oEnvironmentManager);
-        // Set an invalid version of PHP
-        $oEnvironmentManager->aInfo['PHP']['actual']['version'] = '5.5.1';
-        // Test critical PHP settings
-        $result = $oEnvironmentManager->_checkCriticalPHP();
-        // Check the results
-        $this->assertEqual($result, OA_ENV_ERROR_PHP_VERSION_55);
-        $this->_testValidEnvironmentManagerObject($oEnvironmentManager, array('version'), array());
 
         // Test 2: Test memory_limit
 

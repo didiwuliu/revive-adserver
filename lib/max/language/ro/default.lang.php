@@ -97,8 +97,6 @@ $GLOBALS['strDashboardErrorHelp'] = "Daca această eroare se va repeta te rugăm
 // Priority
 $GLOBALS['strPriority'] = "Prioritate";
 $GLOBALS['strPriorityLevel'] = "Nivel prioritate";
-$GLOBALS['strLimitations'] = "Limitări";
-$GLOBALS['strNoLimitations'] = "Fără limitări";
 $GLOBALS['strCapping'] = "Limitare";
 
 // Properties
@@ -198,9 +196,13 @@ $GLOBALS['strMonths'] = "Luni";
 $GLOBALS['strDayOfWeek'] = "Ziua din săptămână";
 
 
-$GLOBALS['strDayFullNames'] = array();
+if (!isset($GLOBALS['strDayFullNames'])) {
+    $GLOBALS['strDayFullNames'] = array();
+}
 
-$GLOBALS['strDayShortCuts'] = array();
+if (!isset($GLOBALS['strDayShortCuts'])) {
+    $GLOBALS['strDayShortCuts'] = array();
+}
 
 $GLOBALS['strHour'] = "Ora";
 $GLOBALS['strSeconds'] = "secunde";
@@ -212,7 +214,6 @@ $GLOBALS['strClients'] = "Advertiseri";
 $GLOBALS['strClientsAndCampaigns'] = "Advertiseri & Campanii";
 $GLOBALS['strAddClient'] = "Adaugă un nou advertiser";
 $GLOBALS['strClientProperties'] = "Proprietăţi advertiser";
-$GLOBALS['strClientHistory'] = "Istoric advertiser";
 $GLOBALS['strNoClients'] = "Momentan nu este nici un advertiser definit. Pentru a crea o campanie, <a href='advertiser-edit.php'>adaugă un advertiser</a> mai întâi.";
 $GLOBALS['strConfirmDeleteClient'] = "Eşti sigur că vrei să ştergi acest advertiser?";
 $GLOBALS['strConfirmDeleteClients'] = "Eşti sigur că vrei să ştergi acest advertiser?";
@@ -241,7 +242,6 @@ $GLOBALS['strAddCampaign_Key'] = "Adaugă campanie <u>n</u>ouă";
 $GLOBALS['strLinkedCampaigns'] = "Campanii asociate";
 $GLOBALS['strCampaignProperties'] = "Proprietăţi campanie";
 $GLOBALS['strCampaignOverview'] = "Vizualizare Campanie";
-$GLOBALS['strCampaignHistory'] = "Istoric campanie";
 $GLOBALS['strNoCampaigns'] = "Momentan nu este definită nici o campanie activă";
 $GLOBALS['strConfirmDeleteCampaign'] = "Eşti sigur că vrei să ştergi aceasta campanie?";
 $GLOBALS['strConfirmDeleteCampaigns'] = "Eşti sigur că vrei să ştergi aceasta campanie?";
@@ -323,7 +323,6 @@ $GLOBALS['strAddBanner_Key'] = "Adaugă banner <u>n</u>ou";
 $GLOBALS['strBannerToCampaign'] = "Campania ta";
 $GLOBALS['strShowBanner'] = "Arată banner";
 $GLOBALS['strBannerProperties'] = "Proprietăţi banner";
-$GLOBALS['strBannerHistory'] = "Istoric banner";
 $GLOBALS['strNoBanners'] = "Momentan nu este definit nici un banner";
 $GLOBALS['strNoBannersAddCampaign'] = "Momentan nu este nici un website definit. Pentru a crea o zonă, <a href='affiliate-edit.php'>adaugă un website nou</a> mai întâi.";
 $GLOBALS['strNoBannersAddAdvertiser'] = "Momentan nu este nici un website definit. Pentru a crea o zonă, <a href='affiliate-edit.php'>adaugă un website nou</a> mai întâi.";
@@ -375,12 +374,9 @@ $GLOBALS['strHardcodedLinks'] = "Link-uri Codate-Puternic";
 $GLOBALS['strCompressSWF'] = "Compresează fişierul SWF pentru descărcare mai rapidă (necesită Flash Player 6)";
 $GLOBALS['strOverwriteSource'] = "Înlocuieşte parametrul sursă";
 
-// Display limitations
+// Display Delviery Rules
 $GLOBALS['strModifyBannerAcl'] = "Opţiuni livrare";
-$GLOBALS['strACL'] = "Livrare";
-$GLOBALS['strNoLimitations'] = "Fără limitări";
-$GLOBALS['strApplyLimitationsTo'] = "Aplică limitări pentru";
-$GLOBALS['strRemoveAllLimitations'] = "Şterge toate limitările";
+$GLOBALS['strACL'] = "Opţiuni livrare";
 $GLOBALS['strEqualTo'] = "este egal cu";
 $GLOBALS['strDifferentFrom'] = "este diferit de";
 $GLOBALS['strGreaterThan'] = "este mai mare decât";
@@ -390,19 +386,24 @@ $GLOBALS['strOR'] = "SAU";                         // logical operator
 $GLOBALS['strOnlyDisplayWhen'] = "Afişează acest banner doar când:";
 $GLOBALS['strWeekDays'] = "Zile din săptămână";
 $GLOBALS['strSource'] = "Sursa";
-$GLOBALS['strDeliveryLimitations'] = "Limitări Livare";
 
 $GLOBALS['strDeliveryCappingReset'] = "Resetează contoare vizualizări după:";
 $GLOBALS['strDeliveryCappingTotal'] = "în total";
 $GLOBALS['strDeliveryCappingSession'] = "pe sesiune";
 
-$GLOBALS['strCappingBanner'] = array();
+if (!isset($GLOBALS['strCappingBanner'])) {
+    $GLOBALS['strCappingBanner'] = array();
+}
 $GLOBALS['strCappingBanner']['limit'] = "Limitează vizualizări banner la:";
 
-$GLOBALS['strCappingCampaign'] = array();
+if (!isset($GLOBALS['strCappingCampaign'])) {
+    $GLOBALS['strCappingCampaign'] = array();
+}
 $GLOBALS['strCappingCampaign']['limit'] = "Limitează vizualizări campanie la:";
 
-$GLOBALS['strCappingZone'] = array();
+if (!isset($GLOBALS['strCappingZone'])) {
+    $GLOBALS['strCappingZone'] = array();
+}
 $GLOBALS['strCappingZone']['limit'] = "Limitează vizualizări zonă la:";
 
 // Website
@@ -410,7 +411,6 @@ $GLOBALS['strAffiliates'] = "Website-uri";
 $GLOBALS['strAffiliatesAndZones'] = "Website-uri & Zone";
 $GLOBALS['strAddNewAffiliate'] = "Adaugă site nou";
 $GLOBALS['strAffiliateProperties'] = "Proprietăţi website";
-$GLOBALS['strAffiliateHistory'] = "Istoric website";
 $GLOBALS['strNoAffiliates'] = "Momentan nu este nici un website definit. Pentru a crea o zonă, <a href='affiliate-edit.php'>adaugă un website nou</a> mai întâi.";
 $GLOBALS['strConfirmDeleteAffiliate'] = "Eşti sigur că vrei să ştergi acest website?";
 $GLOBALS['strConfirmDeleteAffiliates'] = "Eşti sigur că vrei să ştergi acest website?";
@@ -515,7 +515,6 @@ $GLOBALS['strSelectPlacement'] = "Alege Campanie";
 $GLOBALS['strSelectAd'] = "Alege Banner";
 $GLOBALS['strSelectPublisher'] = "Alege Website";
 $GLOBALS['strSelectZone'] = "Alege Zonă";
-$GLOBALS['strConnectionType'] = "Tip";
 $GLOBALS['strStatusPending'] = "Aşteptare Aprobare";
 $GLOBALS['strStatusDuplicate'] = "Creează duplicat";
 $GLOBALS['strConnectionType'] = "Tip";
@@ -526,11 +525,6 @@ $GLOBALS['strShortcutShowStatuses'] = "Arată statusuri";
 $GLOBALS['strStats'] = "Statistici";
 $GLOBALS['strNoStats'] = "Momentan statisticile nu sunt disponibile";
 $GLOBALS['strNoStatsForPeriod'] = "Momentan nu sunt disponibile statistici pentru perioada de la %s la %s";
-$GLOBALS['strGlobalHistory'] = "Istoric Global";
-$GLOBALS['strDailyHistory'] = "Istoric zilnic";
-$GLOBALS['strDailyStats'] = "Statistici zilnice";
-$GLOBALS['strWeeklyHistory'] = "Istoric săptămânal";
-$GLOBALS['strMonthlyHistory'] = "Istoric lunar";
 $GLOBALS['strTotalThisPeriod'] = "Total pentru această perioadă";
 $GLOBALS['strPublisherDistribution'] = "Distribuţie website";
 $GLOBALS['strCampaignDistribution'] = "Distribuţie campanie";
@@ -555,7 +549,6 @@ $GLOBALS['strCampaignStop'] = "Stop campanie";
 
 // Reports
 $GLOBALS['strPeriod'] = "Perioadă";
-$GLOBALS['strLimitations'] = "Limitări";
 
 // Admin_UI_Fields
 $GLOBALS['strAllAdvertisers'] = "Toţi advertiserii";
@@ -584,8 +577,6 @@ $GLOBALS['strAutoDetect'] = "Auto-detectează";
 
 
 // Errors
-$GLOBALS['strErrorDatabaseConnetion'] = "Eroare de conexiune la baza de date.";
-$GLOBALS['strErrorCantConnectToDatabase'] = "A intervenit o eroare privind %s, ce nu se poate conecta la baza de date. Din cauza acestei erori nu este posibilă utilizarea interfeţei de administrare. Livrarea bannerelor ar putea să fie afectată de asemenea. Motive probabile pentru această problemă ar fi: <ul> <li>Serverul bazei de date nu funcţionează în acest moment</li> <li>Locaţia serverului bazei de date a fost schimbată</li> <li>Utilizatorul şi parola folosite pentru conectarea la baza de date nu sunt corecte</li> <li>PHP nu a încărcat extensia MySQL</li> </ul>";
 $GLOBALS['strNoMatchesFound'] = "Nu a fost găsită nici o potrivire";
 $GLOBALS['strErrorOccurred'] = "A intervenit o eroare";
 $GLOBALS['strErrorDBPlain'] = "A intervenit o eroare în timpul accesării bazei de date";
@@ -716,20 +707,9 @@ $GLOBALS['strInactiveAgenciesHidden'] = "conturi inactive ascunse";
 $GLOBALS['strSwitchAccount'] = "Schimbă pe acest cont";
 
 // Channels
-$GLOBALS['strChannel'] = "Canal Targetare";
-$GLOBALS['strChannels'] = "Canale Targetare";
-$GLOBALS['strChannelManagement'] = "Organizare Canal Targetare";
-$GLOBALS['strAddNewChannel'] = "Adaugă canal nou de targetare";
-$GLOBALS['strAddNewChannel_Key'] = "Adaugă canal <u>n</u>ou de targetare";
 $GLOBALS['strChannelToWebsite'] = "Nici un website";
-$GLOBALS['strNoChannels'] = "Momentan nu este nici un canal de targetare definit";
-$GLOBALS['strNoChannelsAddWebsite'] = "Momentan nu este nici un website definit. Pentru a crea o zonă, <a href='affiliate-edit.php'>adaugă un website nou</a> mai întâi.";
-$GLOBALS['strEditChannelLimitations'] = "Editează limitările canalului de targetare";
-$GLOBALS['strChannelProperties'] = "Proprietăţi Canal de Targetare";
 $GLOBALS['strChannelLimitations'] = "Opţiuni livrare";
-$GLOBALS['strConfirmDeleteChannel'] = "Eşti sigur că vrei să ştergi acest canal de targetare?";
-$GLOBALS['strConfirmDeleteChannels'] = "Eşti sigur că vrei să ştergi acest canal de targetare?";
-$GLOBALS['strChannelsOfWebsite'] = 'în'; //this is added between page name and website name eg. 'Targeting channels in www.example.com'
+$GLOBALS['strChannelsOfWebsite'] = 'în'; //this is added between page name and website name eg. 'delivery rule sets in www.example.com'
 
 // Tracker Variables
 $GLOBALS['strVariableName'] = "Nume Variabilă";
@@ -756,7 +736,6 @@ $GLOBALS['strVariableCode'] = "Cod Javascript de contorizare";
 $GLOBALS['strForgotPassword'] = "Ţi-ai uitat parola?";
 $GLOBALS['strPasswordRecovery'] = "Recuperare parolă";
 $GLOBALS['strEmailRequired'] = "Email este un câmp obligatoriu";
-$GLOBALS['strPwdRecEmailNotFound'] = "Adresa de email nu a fost găsită";
 $GLOBALS['strPwdRecWrongId'] = "ID greşit";
 $GLOBALS['strPwdRecEnterEmail'] = "Scrie adresa de email mai jos";
 $GLOBALS['strPwdRecEnterPassword'] = "Scrie noua parolă mai jos";
@@ -787,8 +766,6 @@ $GLOBALS['strCampaignNoDataTimeSpan'] = "Nici o campanie nu a început sau s-a t
 $GLOBALS['strCampaignAuditTrailSetup'] = "Activează Urmărirea Bilanţului pentru a începe vizualizarea Campaniilor";
 
 $GLOBALS['strUnsavedChanges'] = "Nu ai salvat schimbările din această pagină, asigură-te că vei apăsa \"Salvează Shimbări\" când ai terminat";
-$GLOBALS['strDeliveryLimitationsDisagree'] = "ATENŢIE: Limitările motorului de livrare <strong>NU SUNT DE ACORD</strong> cu limitările afişate mai jos<br />Te rugăm apasă Salvează Schimbări pentru a actualiza regulile motorului de livrare";
-$GLOBALS['strDeliveryLimitationsInputErrors'] = "Unele valori incorecte ale rapoartelor de limitare ale livrărilor:";
 
 //confirmation messages
 

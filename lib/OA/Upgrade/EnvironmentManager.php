@@ -30,8 +30,6 @@ define('OA_ENV_ERROR_PHP_TIMEOUT',                  -12);
 define('OA_ENV_ERROR_PHP_SPL',                      -13);
 define('OA_ENV_ERROR_PHP_MBSTRING',                 -14);
 define('OA_ENV_WARNING_MEMORY',                     -15);
-define('OA_ENV_ERROR_PHP_VERSION_54',               -16);
-define('OA_ENV_ERROR_PHP_VERSION_55',               -17);
 
 require_once MAX_PATH.'/lib/OA/DB.php';
 require_once MAX_PATH . '/lib/OA/Admin/Settings.php';
@@ -41,47 +39,38 @@ define('OA_MEMORY_UNLIMITED', 'Unlimited');
 
 class OA_Environment_Manager
 {
-
     var $aInfo = array();
 
     function __construct()
     {
         $conf = $GLOBALS['_MAX']['CONF'];
-        global $installing;
-        if (!$installing)
-        {
+
+        if (empty($GLOBALS['installing'])) {
             $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var');
-        }
-        else
-        {
+            $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var/cache', true);
+            $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var/plugins', true);
+            $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var/templates_compiled', true);
+        } else {
             $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var',true);
         }
-        $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var/cache', true);
-        $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var/plugins', true);
-        $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/var/templates_compiled', true);
+
         $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/plugins', true);
         $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/www/admin/plugins', true);
 
         // if CONF file hasn't been created yet, use the default images folder
-        if (!empty($conf['store']['webDir']))
-        {
+        if (!empty($conf['store']['webDir'])) {
             $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem($conf['store']['webDir']);
-        }
-        else
-        {
+        } else {
             $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem(MAX_PATH.'/www/images');
         }
 
-        if (!empty($conf['delivery']['cachePath']))
-        {
+        if (!empty($conf['delivery']['cachePath'])) {
             $this->aInfo['PERMS']['expected'][] = $this->buildFilePermArrayItem($conf['delivery']['cachePath']);
         }
 
         // Fix directory separator
-        if (DIRECTORY_SEPARATOR != '/')
-        {
-            foreach ($this->aInfo['PERMS']['expected'] as $idx => $aValue)
-            {
+        if (DIRECTORY_SEPARATOR != '/') {
+            foreach ($this->aInfo['PERMS']['expected'] as $idx => $aValue) {
                 $this->aInfo['PERMS']['expected'][$idx]['file'] = str_replace('/', DIRECTORY_SEPARATOR, $aValue['file']);
             }
         }
@@ -90,7 +79,7 @@ class OA_Environment_Manager
         $this->aInfo['PERMS']['actual']   = array();
         $this->aInfo['FILES']['actual']   = array();
 
-        $this->aInfo['PHP']['expected']['version']              = '5.3.0';
+        $this->aInfo['PHP']['expected']['version']              = '5.6.0';
         $this->aInfo['PHP']['expected']['magic_quotes_runtime'] = '0';
         $this->aInfo['PHP']['expected']['safe_mode']            = '0';
         $this->aInfo['PHP']['expected']['file_uploads']         = '1';
@@ -100,6 +89,7 @@ class OA_Environment_Manager
         $this->aInfo['PHP']['expected']['zlib']                 = true;
         $this->aInfo['PHP']['expected']['mysql']                = true;
         $this->aInfo['PHP']['expected']['spl']                  = true;
+        $this->aInfo['PHP']['expected']['json']                 = true;
         $this->aInfo['PHP']['expected']['mbstring']             = false;
         $this->aInfo['PHP']['expected']['timeout']              = false;
         $this->aInfo['COOKIES']['expected']['enabled']          = true;
@@ -159,11 +149,12 @@ class OA_Environment_Manager
         $aResult['xml']                  = extension_loaded('xml');
         $aResult['pcre']                 = extension_loaded('pcre');
         $aResult['zlib']                 = extension_loaded('zlib');
-        // some users have the mysqli extension and not the mysql, some have both
-        // only a problem if they don't have mysql extension (until we handle mysqli)
         $aResult['mysql']                = extension_loaded('mysql');
+        $aResult['mysqli']               = extension_loaded('mysqli');
         $aResult['pgsql']                = extension_loaded('pgsql');
         $aResult['spl']                  = extension_loaded('spl');
+        $aResult['json']                 = extension_loaded('json');
+
         // Check mbstring.func_overload
         $aResult['mbstring.func_overload'] = false;
         if (extension_loaded('mbstring')) {
@@ -203,6 +194,7 @@ class OA_Environment_Manager
     function checkFilePermission($file, $recurse)
     {
         if ((!file_exists($file)) || (!$this->isWritable($file))) {
+            OA::debug('Unwritable ' . ((is_dir($file) ? 'folder ' : 'file ')) . $file);
             return false;
         }
         $recurseWritable = true;
@@ -215,7 +207,6 @@ class OA_Environment_Manager
                     }
                     $thisFile = $file . '/' . $f;
                     if (!$this->checkFilePermission($thisFile, $recurse)) {
-                        OA::debug('Unwritable ' . ((is_dir($thisFile) ? 'folder ' : 'file ')) . $thisFile);
                         $recurseWritable = false;
                     }
                 }
@@ -341,8 +332,6 @@ class OA_Environment_Manager
      * @return integer One of the following values:
      *                      - OA_ENV_ERROR_PHP_NOERROR
      *                      - OA_ENV_ERROR_PHP_VERSION
-     *                      - OA_ENV_ERROR_PHP_VERSION_54
-     *                      - OA_ENV_ERROR_PHP_VERSION_55
      *                      - OA_ENV_ERROR_PHP_SAFEMODE
      *                      - OA_ENV_ERROR_PHP_MAGICQ
      *                 Note that sometimes an error value is returned, sometimes
@@ -356,66 +345,28 @@ class OA_Environment_Manager
      */
     function _checkCriticalPHP()
     {
-        // Due to https://bugs.php.net/bug.php?id=65367 we need to blacklist PHP
-        // 5.4.0-5.4.19 and 5.5.0-5.5.1
-
         // Test the PHP version
-        if (function_exists('version_compare'))
-        {
+        if (!function_exists('version_compare')) {
+            // The user's PHP version is very old - it doesn't
+            // even have the version_compare() function!
+            $result = OA_ENV_ERROR_PHP_VERSION;
+        } else {
             if (version_compare(
                 $this->aInfo['PHP']['actual']['version'],
                 $this->aInfo['PHP']['expected']['version'],
                 "<"
             )) {
                 $result = OA_ENV_ERROR_PHP_VERSION;
-            } elseif (version_compare(
-                $this->aInfo['PHP']['actual']['version'],
-                '5.4.0',
-                ">="
-            ) && version_compare(
-                $this->aInfo['PHP']['actual']['version'],
-                '5.4.20',
-                "<"
-            )) {
-                if (preg_match('#^5\.4\.4-14\+deb7u(\d+)$#', $this->aInfo['PHP']['actual']['version'], $m) &&
-                    $m[1] >= 9
-                ) {
-                    // Thanks Debian for backporting the fix into 5.4.4-14+deb7u9
-                    $result = OA_ENV_ERROR_PHP_NOERROR;
-                } else {
-                    $result = OA_ENV_ERROR_PHP_VERSION_54;
-                }
-            } elseif (version_compare(
-                $this->aInfo['PHP']['actual']['version'],
-                '5.5.0',
-                ">="
-            ) && version_compare(
-                $this->aInfo['PHP']['actual']['version'],
-                '5.5.2',
-                "<"
-            )) {
-                $result = OA_ENV_ERROR_PHP_VERSION_55;
             } else {
                 $result = OA_ENV_ERROR_PHP_NOERROR;
             }
-        } else {
-            // The user's PHP version is well old - it doesn't
-            // even have the version_compare() function!
-            $result = OA_ENV_ERROR_PHP_VERSION;
         }
 
         if ($result == OA_ENV_ERROR_PHP_VERSION) {
             $this->aInfo['PHP']['warning']['version'] =
                 "Version {$this->aInfo['PHP']['actual']['version']} is below the minimum supported version of {$this->aInfo['PHP']['expected']['version']}." .
-                "<br />Although you can install " . PRODUCT_NAME . ", this is not a supported version, and it is not possible to guarantee that everything will work correctly. " .
+                "<br />You should upgrade your PHP to at least {$this->aInfo['PHP']['expected']['version']} in order to install " . PRODUCT_NAME . ". " .
                 "Please see the <a href='" . PRODUCT_DOCSURL . "/faq'>FAQ</a> for more information.";
-        } elseif ($result == OA_ENV_ERROR_PHP_VERSION_54 || $result == OA_ENV_ERROR_PHP_VERSION_55) {
-            $this->aInfo['PHP']['error']['version'] =
-                "Version {$this->aInfo['PHP']['actual']['version']} is not supported due to a bug that prevents " . PRODUCT_NAME . " from working properly." .
-                "<br />You should upgrade your PHP to at least 5.4.20 or 5.5.2 in order to propery install " . PRODUCT_NAME . ". " .
-                "Please see the <a href='" . PRODUCT_DOCSURL . "/faq'>FAQ</a> for more information.";
-                // Exit immediately
-                return $result;
         } else {
             $this->aInfo['PHP']['error'] = false;
         }
@@ -461,11 +412,15 @@ class OA_Environment_Manager
         if (!$this->aInfo['PHP']['actual']['zlib']) {
             $this->aInfo['PHP']['error']['zlib'] = 'The zlib extension must be loaded';
         }
-        if (!($this->aInfo['PHP']['actual']['mysql'] || $this->aInfo['PHP']['actual']['pgsql'])) {
-            $this->aInfo['PHP']['error']['mysql'] = 'Either the mysql or the pgsql extension must be loaded';
+        if (!($this->aInfo['PHP']['actual']['mysql'] || $this->aInfo['PHP']['actual']['mysqli'] || $this->aInfo['PHP']['actual']['pgsql'])) {
+            $this->aInfo['PHP']['error']['mysql'] = $this->aInfo['PHP']['error']['mysqli'] = $this->aInfo['PHP']['error']['pgsql'] =
+                'At least one of these database extensions must be loaded';
         }
         if (!$this->aInfo['PHP']['actual']['spl']) {
             $this->aInfo['PHP']['error']['spl'] = 'The spl extension must be loaded';
+        }
+        if (!$this->aInfo['PHP']['actual']['json']) {
+            $this->aInfo['PHP']['error']['json'] = 'The json extension must be loaded';
         }
         if ($this->aInfo['PHP']['actual']['mbstring.func_overload']) {
             $this->aInfo['PHP']['error']['mbstring.func_overload'] = 'mbstring function overloading must be disabled';

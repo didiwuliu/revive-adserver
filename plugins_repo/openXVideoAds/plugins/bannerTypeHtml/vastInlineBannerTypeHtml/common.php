@@ -198,7 +198,7 @@ class VideoAdsHelper
 
     static function getHelpLinkVideoPlayerConfig()
     {
-        return 'http://documentation.revive-adserver.com/display/DOCS/Invocation+code#Invocationcode-InvocationcodeforInlineVideoadzoneorOverlayVideoadzone';
+        return 'https://documentation.revive-adserver.com/display/DOCS/Invocation+code:+Zone+level#InvocationCode:ZoneLevel-VideoInvocationcodeforInlineVideoadzoneorOverlayVideoadzone';
     }
 
     static function getHelpLinkOpenXPlugin()
@@ -208,6 +208,8 @@ class VideoAdsHelper
 
     static function getLinkCrossdomainExample()
     {
-        return 'https://raw.githubusercontent.com/revive-adserver/revive-adserver/master/www/delivery_dev/crossdomain.xml';
+        return 'http://documentation.revive-adserver.com/display/DOCS/Server+Cross+Domain+Policy';
     }
+
+    
 }

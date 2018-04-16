@@ -47,10 +47,6 @@ $GLOBALS['strImagesUrlPrefixSSL'] = "URL (SSL) Hrambe slik";
 
 // Global
 $GLOBALS['strChooseSection'] = "Izberi oddelek";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "V konfiguracijsko datoteko je bilo nemožno zapisati spremembe";
 $GLOBALS['strUnableToWritePrefs'] = "Podatkovni bazi je bilo nemožno izročiti izbiro";
 $GLOBALS['strImageDirLockedDetected'] = "Strežnik ne more zapisovati v <b>Mapo z slikami</b>. <br>Ne morete nadaljevati, dokler ne spremenite dovoljenj za to mapo ali pa ustvarite novo.";
@@ -166,8 +162,6 @@ $GLOBALS['strDeliveryFilenamesFlash'] = "Vključujoč FLASH (lahko je poln URL)"
 $GLOBALS['strDeliveryCaching'] = "Nastavitve dostavnega pomnilnika pasice";
 $GLOBALS['strDeliveryCacheLimit'] = "Čas med posodobitvami pomnilnika pasice (v sekundah)";
 $GLOBALS['strDeliveryCacheStore'] = "Tip hrambe pomnilnika dostavljanja pasice ";
-$GLOBALS['strDeliveryAcls'] = "Preračunaj omejitve dostave pasice med dostavo";
-$GLOBALS['strDeliveryObfuscate'] = "Zmedi kanal pri dostavi oglasov";
 $GLOBALS['strDeliveryExecPhp'] = "Dovoli izvedbo PHP kode v oglasih<br />(Opozorilo: Varnostno tveganje)";
 $GLOBALS['strDeliveryCtDelimiter'] = "Omejitev zunanjih (3rd party) sledilnikov klikov";
 $GLOBALS['strGlobalDefaultBannerUrl'] = "Privzet URL slikovne pasice ";
@@ -185,7 +179,6 @@ $GLOBALS['defaultLanguage'] = "Privzeti jezik sistema<br />(Vask uporabnik lahko
 $GLOBALS['strGeotargetingSettings'] = "Geociljne nastavitve";
 $GLOBALS['strGeotargeting'] = "Geociljne nastavitve";
 $GLOBALS['strGeotargetingType'] = "Tip geociljnega modula";
-$GLOBALS['strGeoShowUnavailable'] = "Prikaži geociljne dostavne omejitve, četudi GeoIP podatki niso na voljo";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "Inventar";
@@ -237,8 +230,6 @@ $GLOBALS['strBlockAdClicks'] = "Ne štej klikov oglasa, če je obiskovalec klikn
 $GLOBALS['strMaintenanceOI'] = "Presledek vzdrževalnega postopka (v minutah)";
 $GLOBALS['strPrioritySettings'] = "Prednostne nastavitve";
 $GLOBALS['strPriorityInstantUpdate'] = "Takoj posodobi oglasne prioritete po spremembi uporabniškega vmesnika (UI)";
-$GLOBALS['strDefaultImpConWindow'] = "Privzeto okno povezave pri Učinkih oglasa (v sekundah)";
-$GLOBALS['strDefaultCliConWindow'] = "Privzeto okno povezave pri Klikih na oglas (v sekundah)";
 $GLOBALS['strWarnLimit'] = "Pošlji opozorilo ko je število preostalih učinkov manjše kot navedeno tukaj";
 $GLOBALS['strWarnLimitDays'] = "Pošlji opozorilo ko je število preostalih dni manjše kot navedeno tukaj";
 $GLOBALS['strWarnAdmin'] = "Pošlji opozorilo administratorju, ko se kampanja bliža svojemu koncu";

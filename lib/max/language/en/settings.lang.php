@@ -54,10 +54,10 @@ $GLOBALS['strUpgrade'] = "Upgrade";
 
 // Global
 $GLOBALS['strChooseSection'] = "Choose Section";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
+$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons.
+    If you want to make changes, you may need to unlock the configuration file for this installation first.";
+$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues.
+    If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "Unable to write changes to the config file";
 $GLOBALS['strUnableToWritePrefs'] = "Unable to commit preferences to the database";
 $GLOBALS['strImageDirLockedDetected'] = "The supplied <b>Images Folder</b> is not writeable by the server. <br>You can't proceed until you either change permissions of the folder or create the folder.";
@@ -185,9 +185,9 @@ $GLOBALS['strDeliveryFilenamesSinglePageCallJS'] = "Single Page Call (JavaScript
 $GLOBALS['strDeliveryCaching'] = "Banner Delivery Cache Settings";
 $GLOBALS['strDeliveryCacheLimit'] = "Time Between Banner Cache Updates (seconds)";
 $GLOBALS['strDeliveryCacheStore'] = "Banner Delivery Cache Store Type";
-$GLOBALS['strDeliveryAcls'] = "Evaluate banner delivery limitations during delivery";
-$GLOBALS['strDeliveryAclsDirectSelection'] = "Evaluate banner delivery limitations for direct selected ads";
-$GLOBALS['strDeliveryObfuscate'] = "Obfuscate channel when delivering ads";
+$GLOBALS['strDeliveryAcls'] = "Evaluate banner delivery rules during delivery";
+$GLOBALS['strDeliveryAclsDirectSelection'] = "Evaluate banner delivery rules for direct selected ads";
+$GLOBALS['strDeliveryObfuscate'] = "Obfuscate delivery rule set when delivering ads";
 $GLOBALS['strDeliveryExecPhp'] = "Allow PHP code in ads to be executed<br />(Warning: Security risk)";
 $GLOBALS['strDeliveryCtDelimiter'] = "3rd Party Click Tracking Delimiter";
 $GLOBALS['strGlobalDefaultBannerUrl'] = "Global default Banner Image URL";
@@ -205,7 +205,7 @@ $GLOBALS['defaultLanguage'] = "Default System Language<br />(Each user can selec
 $GLOBALS['strGeotargetingSettings'] = "Geotargeting Settings";
 $GLOBALS['strGeotargeting'] = "Geotargeting Settings";
 $GLOBALS['strGeotargetingType'] = "Geotargeting Module Type";
-$GLOBALS['strGeoShowUnavailable'] = "Show geotargeting delivery limitations even if GeoIP data unavailable";
+$GLOBALS['strGeoShowUnavailable'] = "Show geotargeting delivery rules even if GeoIP data unavailable";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "Inventory";
@@ -214,6 +214,7 @@ $GLOBALS['strShowBannerInfo'] = "Show extra banner info on <i>Banners</i> page";
 $GLOBALS['strShowCampaignPreview'] = "Show preview of all banners on <i>Banners</i> page";
 $GLOBALS['strShowBannerHTML'] = "Show actual banner instead of plain HTML code for HTML banner preview";
 $GLOBALS['strShowBannerPreview'] = "Show banner preview at the top of pages which deal with banners";
+$GLOBALS['strUseWyswygHtmlEditorByDefault'] = "Use the WYSIWYG HTML Editor by default when creating or editing HTML banners";
 $GLOBALS['strHideInactive'] = "Hide inactive items from all overview pages";
 $GLOBALS['strGUIShowMatchingBanners'] = "Show matching banners on the <i>Linked banner</i> pages";
 $GLOBALS['strGUIShowParentCampaigns'] = "Show parent campaigns on the <i>Linked banner</i> pages";
@@ -259,13 +260,14 @@ $GLOBALS['strInactivatedCampaigns'] = "List of campaigns which became inactive d
 $GLOBALS['strMaintenanceSettings'] = "Maintenance Settings";
 $GLOBALS['strConversionTracking'] = "Conversion Tracking Settings";
 $GLOBALS['strEnableConversionTracking'] = "Enable Conversion Tracking";
-$GLOBALS['strBlockAdClicks'] = "Don't count Ad Clicks if the viewer has clicked on the same ad/zone pair within the specified time (seconds)";
+$GLOBALS['strBlockInactiveBanners'] = "Don't count ad impressions, clicks or re-direct the user to the target URL if the viewer clicks on a banner that is inactive";
+$GLOBALS['strBlockAdClicks'] = "Don't count ad clicks if the viewer has clicked on the same ad/zone pair within the specified time (seconds)";
 $GLOBALS['strMaintenanceOI'] = "Maintenance Operation Interval (minutes)";
 $GLOBALS['strPrioritySettings'] = "Priority Settings";
 $GLOBALS['strPriorityInstantUpdate'] = "Update advertisement priorities immediately when changes made in the UI";
 $GLOBALS['strPriorityIntentionalOverdelivery'] = "Intentionally over-deliver Contract Campaigns<br />(% over-delivery)";
-$GLOBALS['strDefaultImpConWindow'] = "Default Ad Impression Connection Window (seconds)";
-$GLOBALS['strDefaultCliConWindow'] = "Default Ad Click Connection Window (seconds)";
+$GLOBALS['strDefaultImpConvWindow'] = "Default Ad Impression Conversion Window (seconds)";
+$GLOBALS['strDefaultCliConvWindow'] = "Default Ad Click Conversion Window (seconds)";
 $GLOBALS['strAdminEmailHeaders'] = "Add the following headers to each email message sent by {$PRODUCT_NAME}";
 $GLOBALS['strWarnLimit'] = "Send a warning when the number of impressions left are less than specified here";
 $GLOBALS['strWarnLimitDays'] = "Send a warning when the days left are less than specified here";

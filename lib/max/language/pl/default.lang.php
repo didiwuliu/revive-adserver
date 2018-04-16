@@ -108,8 +108,6 @@ $GLOBALS['strDashboardErrorHelp'] = "Jeśli błąd będzie się powtarzał prosz
 // Priority
 $GLOBALS['strPriority'] = "Priorytet";
 $GLOBALS['strPriorityLevel'] = "Poziom priorytetu";
-$GLOBALS['strLimitations'] = "Limity";
-$GLOBALS['strNoLimitations'] = "Bez limitów";
 $GLOBALS['strCapping'] = "Ograniczenia";
 
 // Properties
@@ -205,9 +203,13 @@ $GLOBALS['strMonths'] = "Miesiący";
 $GLOBALS['strDayOfWeek'] = "Dzień tygodnia";
 
 
-$GLOBALS['strDayFullNames'] = array();
+if (!isset($GLOBALS['strDayFullNames'])) {
+    $GLOBALS['strDayFullNames'] = array();
+}
 
-$GLOBALS['strDayShortCuts'] = array();
+if (!isset($GLOBALS['strDayShortCuts'])) {
+    $GLOBALS['strDayShortCuts'] = array();
+}
 
 $GLOBALS['strHour'] = "godzina";
 $GLOBALS['strSeconds'] = "sekund";
@@ -220,7 +222,6 @@ $GLOBALS['strClients'] = "Reklamodawcy";
 $GLOBALS['strClientsAndCampaigns'] = "Reklamodawcy i Kampanie";
 $GLOBALS['strAddClient'] = "Dodaj nowego reklamodawcę";
 $GLOBALS['strClientProperties'] = "Właściwości reklamodawcy";
-$GLOBALS['strClientHistory'] = "Historia reklamodawcy";
 $GLOBALS['strNoClients'] = "Obecnie nie istnieją żadni określeni reklamodawcy. Aby utworzyć kampanię najpierw <a href='advertiser-edit.php'> dodaj nowego reklamodawcę</a>.";
 $GLOBALS['strConfirmDeleteClient'] = "Czy na pewno chcesz usunąć tego reklamodawcę?";
 $GLOBALS['strConfirmDeleteClients'] = "Czy na pewno chcesz usunąć wybranych reklamodawców?";
@@ -250,7 +251,6 @@ $GLOBALS['strAddCampaign_Key'] = "Dodaj <u>n</u>ową kampanię";
 $GLOBALS['strLinkedCampaigns'] = "Kampanie podłączone";
 $GLOBALS['strCampaignProperties'] = "Właściwości kampanii";
 $GLOBALS['strCampaignOverview'] = "Przegląd kampanii";
-$GLOBALS['strCampaignHistory'] = "Historia kampanii";
 $GLOBALS['strNoCampaigns'] = "Obecnie brak kampanii zdefiniowanych dla tego reklamodawcy.";
 $GLOBALS['strConfirmDeleteCampaign'] = "Czy na pewno chcesz usunąć tę kampanię?";
 $GLOBALS['strConfirmDeleteCampaigns'] = "Czy na pewno chcesz usunąć wybrane kampanie?";
@@ -331,7 +331,6 @@ $GLOBALS['strAddBanner_Key'] = "Dodaj <u>n</u>owy baner";
 $GLOBALS['strBannerToCampaign'] = "Twoja kampania";
 $GLOBALS['strShowBanner'] = "Pokaż baner";
 $GLOBALS['strBannerProperties'] = "Właściwości banera";
-$GLOBALS['strBannerHistory'] = "Historia banera";
 $GLOBALS['strNoBanners'] = "Obecnie brak stref zdefiniowanych dla tej strony.";
 $GLOBALS['strNoBannersAddCampaign'] = "Obecnie nie istnieją żadne zdefiniowane strony internetowe. Aby utworzyć strefę najpierw <a href='affiliate-edit.php'> dodaj nową stronę internetową </ a> .";
 $GLOBALS['strNoBannersAddAdvertiser'] = "Obecnie nie istnieją żadne zdefiniowane strony internetowe. Aby utworzyć strefę najpierw <a href='affiliate-edit.php'> dodaj nową stronę internetową </ a> .";
@@ -382,13 +381,9 @@ $GLOBALS['strHardcodedLinks'] = "Wpisane odnośniki";
 $GLOBALS['strCompressSWF'] = "Kompresuj plik SWF, aby usprawnić pobieranie (wymagany Flash 6)";
 $GLOBALS['strOverwriteSource'] = "Wstaw nowy parametr źródła";
 
-// Display limitations
+// Display Delviery Rules
 $GLOBALS['strModifyBannerAcl'] = "Opcje dostarczania";
-$GLOBALS['strACL'] = "Dostarczanie";
-$GLOBALS['strACLAdd'] = "Dodaj nowe ograniczenie";
-$GLOBALS['strNoLimitations'] = "Bez limitów";
-$GLOBALS['strApplyLimitationsTo'] = "Zastosuj limity do";
-$GLOBALS['strRemoveAllLimitations'] = "Usuń wszystkie limity";
+$GLOBALS['strACL'] = "Opcje dostarczania";
 $GLOBALS['strEqualTo'] = "jest równy";
 $GLOBALS['strDifferentFrom'] = "jest inny niż";
 $GLOBALS['strGreaterThan'] = "jest większe niż";
@@ -398,19 +393,24 @@ $GLOBALS['strOR'] = "LUB";                         // logical operator
 $GLOBALS['strOnlyDisplayWhen'] = "Wyświetlaj ten baner wyłącznie, gdy:";
 $GLOBALS['strWeekDays'] = "Dni robocze";
 $GLOBALS['strSource'] = "Źródło";
-$GLOBALS['strDeliveryLimitations'] = "Limity dostarczania";
 
 $GLOBALS['strDeliveryCappingReset'] = "Zresetuj liczniki po:";
 $GLOBALS['strDeliveryCappingTotal'] = "ogółem";
 $GLOBALS['strDeliveryCappingSession'] = "na sesję";
 
-$GLOBALS['strCappingBanner'] = array();
+if (!isset($GLOBALS['strCappingBanner'])) {
+    $GLOBALS['strCappingBanner'] = array();
+}
 $GLOBALS['strCappingBanner']['limit'] = "Ogranicz wyświetlenia banera do:";
 
-$GLOBALS['strCappingCampaign'] = array();
+if (!isset($GLOBALS['strCappingCampaign'])) {
+    $GLOBALS['strCappingCampaign'] = array();
+}
 $GLOBALS['strCappingCampaign']['limit'] = "Ogranicz wyświetlenia kampanii do:";
 
-$GLOBALS['strCappingZone'] = array();
+if (!isset($GLOBALS['strCappingZone'])) {
+    $GLOBALS['strCappingZone'] = array();
+}
 $GLOBALS['strCappingZone']['limit'] = "Ogranicz wyświetlenia stref do:";
 
 // Website
@@ -419,7 +419,6 @@ $GLOBALS['strAffiliates'] = "Strony";
 $GLOBALS['strAffiliatesAndZones'] = "Strony i Strefy";
 $GLOBALS['strAddNewAffiliate'] = "Dodaj Stronę";
 $GLOBALS['strAffiliateProperties'] = "Właściwości Strony";
-$GLOBALS['strAffiliateHistory'] = "Historia Strony";
 $GLOBALS['strNoAffiliates'] = "Obecnie nie istnieją żadne zdefiniowane strony internetowe. Aby utworzyć strefę najpierw <a href='affiliate-edit.php'> dodaj nową stronę internetową </ a> .";
 $GLOBALS['strConfirmDeleteAffiliate'] = "Czy na pewno chcesz usunąć tę Stronę?";
 $GLOBALS['strConfirmDeleteAffiliates'] = "Czy na pewno chcesz usunąć wybrane strony?";
@@ -526,7 +525,6 @@ $GLOBALS['strSelectPlacement'] = "Wybierz kampanię";
 $GLOBALS['strSelectAd'] = "Wybierz baner";
 $GLOBALS['strSelectPublisher'] = "Wybierz stronę";
 $GLOBALS['strSelectZone'] = "Wybierz strefę (obszar)";
-$GLOBALS['strConnectionType'] = "Typ";
 $GLOBALS['strStatusPending'] = "Oczekuje";
 $GLOBALS['strStatusDuplicate'] = "Duplikuj";
 $GLOBALS['strConnectionType'] = "Typ";
@@ -537,11 +535,6 @@ $GLOBALS['strShortcutShowStatuses'] = "Pokaż statusy";
 $GLOBALS['strStats'] = "Statystyki";
 $GLOBALS['strNoStats'] = "Nie ma obecnie żadnych statystyk";
 $GLOBALS['strNoStatsForPeriod'] = "Obecnie brak statystyk za okres od %s do %s";
-$GLOBALS['strGlobalHistory'] = "Historia ogólna";
-$GLOBALS['strDailyHistory'] = "Historia dzienna";
-$GLOBALS['strDailyStats'] = "Statystyki dzienne";
-$GLOBALS['strWeeklyHistory'] = "Historia tygodniowa";
-$GLOBALS['strMonthlyHistory'] = "Historia miesięczna";
 $GLOBALS['strTotalThisPeriod'] = "Ogółem dla tego okresu";
 $GLOBALS['strPublisherDistribution'] = "Dystrybucja Stron";
 $GLOBALS['strCampaignDistribution'] = "Dystrybucja kampanii";
@@ -566,7 +559,6 @@ $GLOBALS['strCampaignStop'] = "Zatrzymanie kampanii";
 
 // Reports
 $GLOBALS['strPeriod'] = "Okres";
-$GLOBALS['strLimitations'] = "Limity";
 
 // Admin_UI_Fields
 $GLOBALS['strAllAdvertisers'] = "Wszyscy reklamodawcy";
@@ -595,8 +587,6 @@ $GLOBALS['strAutoDetect'] = "Automatyczne wykrywanie";
 
 
 // Errors
-$GLOBALS['strErrorDatabaseConnetion'] = "Błąd połączenia z bazą danych.";
-$GLOBALS['strErrorCantConnectToDatabase'] = "Błąd krytyczny. %s nie może połączyć się z bazą danych. Interfejs administratora jest niedostępny. Dostarczanie banerów również może zostać zakłócone. Przyczyny zaistniałego problemu mogą być następujące: <ul> <li>Serwer bazy danych nie działa w danej chwili</li> <li>Lokalizacja serwera bazy danych uległa zmianie</li> <li>Nazwa użytkownika bądź hasło używane do łączenia się z serwerem bazy danych jest niepoprawne</li> <li>PHP nie załadował rozwinięcia MySQL.";
 $GLOBALS['strNoMatchesFound'] = "Nie znaleziono pasujących elementów";
 $GLOBALS['strErrorOccurred'] = "Wystąpił błąd";
 $GLOBALS['strErrorDBPlain'] = "Wystąpił błąd podczas wywoływania bazy danych";
@@ -728,20 +718,9 @@ $GLOBALS['strInactiveAgenciesHidden'] = "ukryte konta nieaktywne";
 $GLOBALS['strSwitchAccount'] = "Zmień konto";
 
 // Channels
-$GLOBALS['strChannel'] = "Kanał targetowania";
-$GLOBALS['strChannels'] = "Kanały targetowania";
-$GLOBALS['strChannelManagement'] = "Zarządzenie kanałem targetowania";
-$GLOBALS['strAddNewChannel'] = "Dodaj nowy kanał targetowania";
-$GLOBALS['strAddNewChannel_Key'] = "Dodaj <u>n</u>owy kanał targetowania";
 $GLOBALS['strChannelToWebsite'] = "Brak Stron";
-$GLOBALS['strNoChannels'] = "W tej chwili brak zdefiniowanych kanałów targetowania";
-$GLOBALS['strNoChannelsAddWebsite'] = "Obecnie nie istnieją żadne zdefiniowane strony internetowe. Aby utworzyć strefę najpierw <a href='affiliate-edit.php'> dodaj nową stronę internetową </ a> .";
-$GLOBALS['strEditChannelLimitations'] = "Edytuj limity dla kanału targetowania";
-$GLOBALS['strChannelProperties'] = "Ustawienia docelowego kanału";
 $GLOBALS['strChannelLimitations'] = "Opcje dostarczania";
-$GLOBALS['strConfirmDeleteChannel'] = "Czy jesteś pewien, że chcesz usunąć kanał targetowania?";
-$GLOBALS['strConfirmDeleteChannels'] = "Czy na pewno chcesz usunąć wybrane kanały targetowania?";
-$GLOBALS['strChannelsOfWebsite'] = 'w'; //this is added between page name and website name eg. 'Targeting channels in www.example.com'
+$GLOBALS['strChannelsOfWebsite'] = 'w'; //this is added between page name and website name eg. 'delivery rule sets in www.example.com'
 
 // Tracker Variables
 $GLOBALS['strVariableName'] = "Nazwa zmiennej";
@@ -770,7 +749,6 @@ $GLOBALS['strVariableCode'] = "Kod śledzenia JavaScript";
 $GLOBALS['strForgotPassword'] = "Nie pamiętasz hasła?";
 $GLOBALS['strPasswordRecovery'] = "Odzyskiwanie hasła";
 $GLOBALS['strEmailRequired'] = "Adres e-mail jest obligatoryjny";
-$GLOBALS['strPwdRecEmailNotFound'] = "Nie znaleziono adresu e-mail";
 $GLOBALS['strPwdRecWrongId'] = "ID niepoprawne";
 $GLOBALS['strPwdRecEnterEmail'] = "Wprowadź adres e-mail poniżej";
 $GLOBALS['strPwdRecEnterPassword'] = "Wprowadź nowe hasło poniżej";
@@ -799,8 +777,6 @@ $GLOBALS['strCampaignNoDataTimeSpan'] = "Żadna kampania nie rozpoczęła się a
 $GLOBALS['strCampaignAuditTrailSetup'] = "Aktywuj opcję Audyt, aby uruchomić podgląd Kampanii";
 
 $GLOBALS['strUnsavedChanges'] = "Nie zapisałeś zmian na tej stronie. Pamiętaj, aby nacisnąć przycisk \"Zapisz zmiany\" kiedy skończysz.";
-$GLOBALS['strDeliveryLimitationsDisagree'] = "OSTRZEŻENIE: Ograniczenia maszyny dostarczania <strong>NIE SĄ ZGODNE</strong> z ograniczeniami przedstawionymi poniżej<br /> Proszę nacisnąć ZAPISZ ZMIANY, aby aktualizować reguły dla maszyny dostarczania";
-$GLOBALS['strDeliveryLimitationsInputErrors'] = "Niektóre limity dostarczania podają nieprawidłowe wartości:";
 
 //confirmation messages
 

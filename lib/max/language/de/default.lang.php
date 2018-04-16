@@ -119,8 +119,6 @@ $GLOBALS['strPriorityLevel'] = "Dringlichkeitsstufe";
 $GLOBALS['strHighAds'] = "Vertrags-Werbeanzeigen";
 $GLOBALS['strECPMAds'] = "eCPM Werbeanzeigen";
 $GLOBALS['strLowAds'] = "Verbleibende-Werbeanzeigen";
-$GLOBALS['strLimitations'] = "Einschränkungen";
-$GLOBALS['strNoLimitations'] = "Keine Beschränkungen";
 $GLOBALS['strCapping'] = "Kappung";
 
 // Properties
@@ -156,7 +154,7 @@ $GLOBALS['strUserUnlinkedFromAccount'] = "Benutzer wurde von diesem Benutzerkont
 $GLOBALS['strUserWasDeleted'] = "Benutzer wurde gelöscht";
 $GLOBALS['strUserNotLinkedWithAccount'] = "Dieser Benutzer ist nicht mit diesem Benutzerkonto verknüpft";
 $GLOBALS['strCantDeleteOneAdminUser'] = "Dieser Benutzer kann nicht gelöscht werden. Mindestens ein Benutzer muß mit dem Administratorkonto verknüpft sein.";
-$GLOBALS['strLinkUserHelp'] = "Um einen <b>existierenden Benutzer</b> hinzuzufügen, schreiben Sie %1\\$s und klicken auf %2\\$s <br />Um einen <b>neuen Benutzer</b>, schreiben Sie den gewünschten %1\\$s und klicken Sie %2\\$s";
+$GLOBALS['strLinkUserHelp'] = "Um einen <b>existierenden Benutzer</b> hinzuzufügen, schreiben Sie %1\$s und klicken auf %2\$s <br />Um einen <b>neuen Benutzer</b>, schreiben Sie den gewünschten %1\$s und klicken Sie %2\$s";
 $GLOBALS['strLinkUserHelpUser'] = "Benutzername";
 $GLOBALS['strLinkUserHelpEmail'] = "E-Mail Adresse";
 $GLOBALS['strLastLoggedIn'] = "Zuletzt eingeloggt";
@@ -171,7 +169,6 @@ $GLOBALS['strAuthentification'] = "Authentifikation";
 $GLOBALS['strWelcomeTo'] = "Willkommen bei";
 $GLOBALS['strEnterUsername'] = "Geben Sie Benutzername und Passwort ein";
 $GLOBALS['strEnterBoth'] = "Bitte beides eingeben; Benutzername und Passwort";
-$GLOBALS['strEnableCookies'] = "Sie müssen Cookies im Browser aktivieren bevor die {$PRODUCT_NAME} verwenden können";
 $GLOBALS['strSessionIDNotMatch'] = "Sitzungs-Cookie fehlerhaft, bitte loggen Sie sich erneut ein.";
 $GLOBALS['strLogin'] = "Anmelden";
 $GLOBALS['strLogout'] = "Ausloggen";
@@ -235,7 +232,9 @@ $GLOBALS['strMonths'] = "Monate";
 $GLOBALS['strDayOfWeek'] = "Wochentag";
 
 
-$GLOBALS['strDayFullNames'] = array();
+if (!isset($GLOBALS['strDayFullNames'])) {
+    $GLOBALS['strDayFullNames'] = array();
+}
 $GLOBALS['strDayFullNames'][0] = 'Sonntag';
 $GLOBALS['strDayFullNames'][1] = 'Montag';
 $GLOBALS['strDayFullNames'][2] = 'Dienstag';
@@ -244,7 +243,9 @@ $GLOBALS['strDayFullNames'][4] = 'Donnerstag';
 $GLOBALS['strDayFullNames'][5] = 'Freitag';
 $GLOBALS['strDayFullNames'][6] = 'Samstag';
 
-$GLOBALS['strDayShortCuts'] = array();
+if (!isset($GLOBALS['strDayShortCuts'])) {
+    $GLOBALS['strDayShortCuts'] = array();
+}
 $GLOBALS['strDayShortCuts'][0] = 'So';
 $GLOBALS['strDayShortCuts'][1] = 'Mo';
 $GLOBALS['strDayShortCuts'][2] = 'Di';
@@ -264,7 +265,6 @@ $GLOBALS['strClients'] = "Werbetreibende";
 $GLOBALS['strClientsAndCampaigns'] = "Werbetreibende & Kampagnen";
 $GLOBALS['strAddClient'] = "Neuen Werbetreibenden hinzufügen";
 $GLOBALS['strClientProperties'] = "Merkmale Werbetreibender";
-$GLOBALS['strClientHistory'] = "Entwicklung Werbetreibende";
 $GLOBALS['strNoClients'] = "Es sind keine Werbetreibenden angelegt. Um eine Werbekampagne anzulegen, müssen Sie zuerst einen <a href='advertiser-edit.php'>Werbetreibenden hinzufügen</a>.";
 $GLOBALS['strConfirmDeleteClient'] = "Soll dieser Werbetreibende wirklich gelöscht werden?";
 $GLOBALS['strConfirmDeleteClients'] = "Möchten Sie die ausgewählten Werbetreibenden wirklich löschen?";
@@ -296,7 +296,6 @@ $GLOBALS['strCampaignForAdvertiser'] = "für Werbetreibende";
 $GLOBALS['strLinkedCampaigns'] = "Verknüpfte Kampagnen";
 $GLOBALS['strCampaignProperties'] = "Merkmale Kampagnen";
 $GLOBALS['strCampaignOverview'] = "Übersicht Kampagnen";
-$GLOBALS['strCampaignHistory'] = "Entwicklung Kampagnen";
 $GLOBALS['strNoCampaigns'] = "Für diesen Werbetreibenden sind derzeit keine Kampagnen definiert.";
 $GLOBALS['strNoCampaignsAddAdvertiser'] = "Momentan sind keine Kampagnen definiert, da keine  Werbetreibenden angelegt wurden. Um eine Kampagne zu erstellen, bitte erst einen <a href='advertiser-edit.php'>Webetreibenden anlegen</a>.";
 $GLOBALS['strConfirmDeleteCampaign'] = "Soll diese Kampagne wirklich gelöscht werden?";
@@ -434,7 +433,6 @@ $GLOBALS['strAddBanner_Key'] = "<u>N</u>eues Banner hinzufügen ";
 $GLOBALS['strBannerToCampaign'] = "Zur Kampagne";
 $GLOBALS['strShowBanner'] = "Banner anzeigen";
 $GLOBALS['strBannerProperties'] = "Bannermerkmale";
-$GLOBALS['strBannerHistory'] = "Entwicklung Banner";
 $GLOBALS['strNoBanners'] = "Für diese Kampagne sind zur Zeit keine Banner definiert";
 $GLOBALS['strNoBannersAddCampaign'] = "Es sind keine Banner angelegt, da es noch keine Kampagnen gibt. Um einen Banner anzulegen, müssen Sie zuerst eine <a href='campaign-edit.php?clientid=%s'>neue Kampagne hinzufügen</a>.";
 $GLOBALS['strNoBannersAddAdvertiser'] = "Es sind keine Banner angelegt, da es noch keine Werbetreibenden gibt. Um einen Banner anzulegen, müssen Sie zuerst einen <a href='advertiser-edit.php'>neue Werbetreibenden hinzufügen</a>.";
@@ -485,13 +483,9 @@ $GLOBALS['strHardcodedLinks'] = "direkter Link (hard-coded)";
 $GLOBALS['strCompressSWF'] = "Komprimieren der SWF-Datei für eine schnellere Übertragung zum Browser (Flash-Player 6 wird benötigt)";
 $GLOBALS['strOverwriteSource'] = "Überschreiben der Parameter im Quelltext";
 
-// Display limitations
+// Display Delviery Rules
 $GLOBALS['strModifyBannerAcl'] = "Auslieferungsoptionen";
-$GLOBALS['strACL'] = "Bannerauslieferung";
-$GLOBALS['strACLAdd'] = "Auslieferungsbeschränkung hinzufügen";
-$GLOBALS['strNoLimitations'] = "Keine Beschränkungen";
-$GLOBALS['strApplyLimitationsTo'] = "Beschränkungen anwenden bei";
-$GLOBALS['strRemoveAllLimitations'] = "Alle Beschränkungen löschen";
+$GLOBALS['strACL'] = "Auslieferungsoptionen";
 $GLOBALS['strEqualTo'] = "ist gleich";
 $GLOBALS['strDifferentFrom'] = "ist ungleich";
 $GLOBALS['strContains'] = "enthält";
@@ -502,21 +496,26 @@ $GLOBALS['strOR'] = "ODER";                         // logical operator
 $GLOBALS['strOnlyDisplayWhen'] = "Diesen Banner nur anzeigen, wenn:";
 $GLOBALS['strWeekDays'] = "Wochentage";
 $GLOBALS['strSource'] = "Quelle";
-$GLOBALS['strDeliveryLimitations'] = "Auslieferungsbeschränkungen";
 
 $GLOBALS['strDeliveryCappingReset'] = "Rücksetzen AdView-Zählers nach";
 $GLOBALS['strDeliveryCappingTotal'] = "insgesamt";
 $GLOBALS['strDeliveryCappingSession'] = "pro Session";
 
-$GLOBALS['strCappingBanner'] = array();
+if (!isset($GLOBALS['strCappingBanner'])) {
+    $GLOBALS['strCappingBanner'] = array();
+}
 $GLOBALS['strCappingBanner']['title'] = "Kappung der Auslieferung pro Besucher";
 $GLOBALS['strCappingBanner']['limit'] = "Banner Ausliferungen kappen auf:";
 
-$GLOBALS['strCappingCampaign'] = array();
+if (!isset($GLOBALS['strCappingCampaign'])) {
+    $GLOBALS['strCappingCampaign'] = array();
+}
 $GLOBALS['strCappingCampaign']['title'] = "Kappung der Auslieferung pro Besucher";
 $GLOBALS['strCappingCampaign']['limit'] = "Kampagnen kappen auf:";
 
-$GLOBALS['strCappingZone'] = array();
+if (!isset($GLOBALS['strCappingZone'])) {
+    $GLOBALS['strCappingZone'] = array();
+}
 $GLOBALS['strCappingZone']['title'] = "Kappung der Auslieferung pro Besucher";
 $GLOBALS['strCappingZone']['limit'] = "Zone kappen auf:";
 
@@ -526,7 +525,6 @@ $GLOBALS['strAffiliates'] = "Webseiten";
 $GLOBALS['strAffiliatesAndZones'] = "Webseiten & Zonen";
 $GLOBALS['strAddNewAffiliate'] = "Neuen Webseite anlegen";
 $GLOBALS['strAffiliateProperties'] = "Webseite Merkmale";
-$GLOBALS['strAffiliateHistory'] = "Entwicklung Webseite";
 $GLOBALS['strNoAffiliates'] = "Es sind keine Webseiten angelegt. Um eine Zone anzulegen, müssen Sie zuerst eine <a href='affiliate-edit.php'>Webseite hinzufügen</a>.";
 $GLOBALS['strConfirmDeleteAffiliate'] = "Soll diese Webseite tatsächlich gelöscht werden?";
 $GLOBALS['strConfirmDeleteAffiliates'] = "Möchten Sie die ausgewählten Webseiten wirklich löschen?";
@@ -641,7 +639,6 @@ $GLOBALS['strSelectPlacement'] = "Kampagne auswählen";
 $GLOBALS['strSelectAd'] = "Werbemittel auswählen";
 $GLOBALS['strSelectPublisher'] = "Webseite auswählen";
 $GLOBALS['strSelectZone'] = "Zone auswählen";
-$GLOBALS['strConnectionType'] = "Art";
 $GLOBALS['strStatusPending'] = "wartet auf Überprüfung";
 $GLOBALS['strStatusApproved'] = "Freigegeben";
 $GLOBALS['strStatusDisapproved'] = "Abgelehnt";
@@ -654,11 +651,6 @@ $GLOBALS['strShortcutShowStatuses'] = "Status anzeigen";
 $GLOBALS['strStats'] = "Statistiken";
 $GLOBALS['strNoStats'] = "Zur Zeit sind keine Statistiken vorhanden";
 $GLOBALS['strNoStatsForPeriod'] = "Es sind derzeit keine Statistiken für den Zeitraum %s bis %s vorhanden";
-$GLOBALS['strGlobalHistory'] = "Bisherige Entwicklung";
-$GLOBALS['strDailyHistory'] = "Entwicklung Tag";
-$GLOBALS['strDailyStats'] = "Tagesstatistik";
-$GLOBALS['strWeeklyHistory'] = "Entwicklung Woche";
-$GLOBALS['strMonthlyHistory'] = "Entwicklung Monat";
 $GLOBALS['strTotalThisPeriod'] = "Summe in der Periode";
 $GLOBALS['strPublisherDistribution'] = "Verteilung auf die Webseiten";
 $GLOBALS['strCampaignDistribution'] = "Verteilung auf die Kampagnen";
@@ -669,10 +661,6 @@ $GLOBALS['strBreakdownByMonth'] = "Monat";
 $GLOBALS['strBreakdownByDow'] = "Wochentag";
 $GLOBALS['strBreakdownByHour'] = "Stunde";
 $GLOBALS['strItemsPerPage'] = "Anzeigen pro Seite";
-$GLOBALS['strDistributionHistoryCampaign'] = "Auslieferungsverlauf (Kampagne)";
-$GLOBALS['strDistributionHistoryBanner'] = "Auslieferungsverlauf (Banner)";
-$GLOBALS['strDistributionHistoryWebsite'] = "Auslieferungsverlauf (Webseite)";
-$GLOBALS['strDistributionHistoryZone'] = "Auslieferungsverlauf (Zone)";
 $GLOBALS['strShowGraphOfStatistics'] = "Statistiken <u>g</u>raphisch darstellen";
 $GLOBALS['strExportStatisticsToExcel'] = "Statistiken nach Excel <u>e</u>xportieren";
 $GLOBALS['strGDnotEnabled'] = "Um grafische Statistiken anzeigen zu können, muss in PHP die GD Erweiterung aktiviert sein. <br />Bitte schauen Sie bei <a href='http://www.php.net/gd' target='_blank'>http://www.php.net/gd</a> für weitere Informationen.";
@@ -688,7 +676,6 @@ $GLOBALS['strCampaignStop'] = "Kampagnen Ende";
 // Reports
 $GLOBALS['strAdvancedReports'] = "Erweiterte Berichte";
 $GLOBALS['strPeriod'] = "Zeitraum";
-$GLOBALS['strLimitations'] = "Einschränkungen";
 
 // Admin_UI_Fields
 $GLOBALS['strAllAdvertisers'] = "Alle Werbetreibende";
@@ -721,8 +708,6 @@ $GLOBALS['strCacheBusterComment'] = "  * Ersetzen Sie alle Vorkommen von {random
 
 
 // Errors
-$GLOBALS['strErrorDatabaseConnetion'] = "Datenbankverbindungsfehler.";
-$GLOBALS['strErrorCantConnectToDatabase'] = "Es wurde ein schwerwiegender Fehler festgestellt: %s kann keine Verbindung zur Datenbank herstellen. Aus diesem Grund ist es nicht möglich die Benutzeroberfläche des Administrators zu verwenden. Die Bannerauslieferung könnte ebenfalls betroffen sein. Mögliche Ursachen für dieses Problem sind:<ul><li>Der Datenbankserver ist heruntergefahren oder nicht verfügbar</li><li>Die Adresse des Datenbankservers hat sich geändert</li><li>Der Benutzername oder das Passwort für die datenbank hat sich geändert</li><li>PHP hat die Datenbankextension (MySQL) nicht geladen</li></ul>";
 $GLOBALS['strNoMatchesFound'] = "Kein Objekt gefunden";
 $GLOBALS['strErrorOccurred'] = "Ein Fehler ist aufgetreten";
 $GLOBALS['strErrorDBPlain'] = "Beim Zugriff auf die Datenbank ist ein Fehler aufgetreten ";
@@ -870,19 +855,8 @@ $GLOBALS['strInactiveAgenciesHidden'] = "deaktivierte Benutzerkonten verborgen";
 $GLOBALS['strSwitchAccount'] = "Zu diesem Benutzerzugang wechseln";
 
 // Channels
-$GLOBALS['strChannel'] = "Zielgruppe";
-$GLOBALS['strChannels'] = "Zielgruppen";
-$GLOBALS['strChannelManagement'] = "Zielgruppe bearbeiten ";
-$GLOBALS['strAddNewChannel'] = "Eine neue Zielgruppe hinzufügen";
-$GLOBALS['strAddNewChannel_Key'] = "<u>N</u>eue Zielgruppe anlegen";
 $GLOBALS['strChannelToWebsite'] = "zur Webseite";
-$GLOBALS['strNoChannels'] = "Zur Zeit sind keine Zielgruppen angelegt.";
-$GLOBALS['strNoChannelsAddWebsite'] = "Es sind keine Zielgruppen angelegt, da es noch keine Webseiten gibt. Um eine Zielgruppe anzulegen, müssen Sie zuerst eine <a href='affiliate-edit.php'>neue Webseite hinzufügen</a>.";
-$GLOBALS['strEditChannelLimitations'] = "Limitierungen in dieser Zielgruppen ändern";
-$GLOBALS['strChannelProperties'] = "Merkmale Zielgruppe";
 $GLOBALS['strChannelLimitations'] = "Auslieferungsoptionen";
-$GLOBALS['strConfirmDeleteChannel'] = "Wollen Sie diese Zielgruppe wirklich löschen?";
-$GLOBALS['strConfirmDeleteChannels'] = "Wollen Sie die ausgewählten Zielgruppen wirklich löschen?";
 
 // Tracker Variables
 $GLOBALS['strVariableName'] = "Variablenname";
@@ -910,7 +884,6 @@ $GLOBALS['strTrackerTypeCustom'] = "Eigener JS code";
 $GLOBALS['strForgotPassword'] = "Passwort vergessen?";
 $GLOBALS['strPasswordRecovery'] = "Password wiederherstellen";
 $GLOBALS['strEmailRequired'] = "Das Eingabefeld e-Mail muss ausgefüllt sein";
-$GLOBALS['strPwdRecEmailNotFound'] = "Die e-Mail Adresse konnte nicht gefunden werden";
 $GLOBALS['strPwdRecWrongId'] = "Falsche ID";
 $GLOBALS['strPwdRecEnterEmail'] = "Geben Sie nachfolgend Ihre eMail Adresse ein";
 $GLOBALS['strPwdRecEnterPassword'] = "Geben Sie nachfolgend Ihr neues Passwort ein";
@@ -941,8 +914,6 @@ $GLOBALS['strCampaignNoDataTimeSpan'] = "In dem angegebenen Zeitraum wurde keine
 $GLOBALS['strCampaignAuditTrailSetup'] = "Aktivieren Sie das Prüfprotokoll um Kampagnen anzuzeigen";
 
 $GLOBALS['strUnsavedChanges'] = "Sie haben noch ungesicherte Änderungen auf dieser Seite. Nur wenn Sie am Ende \"Speichern\" klicken werden diese Änderungen übernommen";
-$GLOBALS['strDeliveryLimitationsDisagree'] = "WARNUNG: Das Auslieferungsmodul stimmt mit den folgenden Auslieferungsbeschränkungen <strong>NICHT ÜBEREIN</strong>. Bitte klicken Sie Änderungen speichern um die Regeln des Auslieferungsmoduls zu berichtigen.";
-$GLOBALS['strDeliveryLimitationsInputErrors'] = "Hier einige der nicht korrekten Werte des Banner Targeting Reports:";
 
 //confirmation messages
 $GLOBALS['strYouAreNowWorkingAsX'] = "Sie arbeiten nun als <b>%s</b>";
@@ -1002,12 +973,6 @@ $GLOBALS['strZoneLinkedCampaign'] = "Die Kampagne wurde mit der Zone <a href='%s
 $GLOBALS['strZoneRemovedBanner'] = "Die Verlinkung des Banners mit der Zone <a href='%s'>%s</a> wurde aufgehoben";
 $GLOBALS['strZoneRemovedCampaign'] = "Die Verlinkung der Kampagne mit der Zone <a href='%s'>%s</a> wurde aufgehoben";
 
-$GLOBALS['strChannelHasBeenAdded'] = "Zielgruppe <a href='%s'>%s</a> wurde hinzugefügt, <a href='%s'>ändern der Auslieferungsoptionen</a>";
-$GLOBALS['strChannelHasBeenUpdated'] = "Die Zielgruppe <a href='%s'>%s</a> wurde aktualisiert";
-$GLOBALS['strChannelAclHasBeenUpdated'] = "Auslieferungsoptionen für die Zielgruppe <a href='%s'>%s</a> wurden geändert";
-$GLOBALS['strChannelHasBeenDeleted'] = "Zielgruppe <b>%s</b> wurde gelöscht";
-$GLOBALS['strChannelsHaveBeenDeleted'] = "Alle ausgewählten Zielgruppen wurden gelöscht";
-$GLOBALS['strChannelHasBeenDuplicated'] = "Die Zielgruppe <a href='%s'>%s</a> wurde nach <a href='%s'>%s</a> kopiert";
 
 $GLOBALS['strUserPreferencesUpdated'] = "Ihre Voreinstellungen <b>%s</b> wurden geändert";
 $GLOBALS['strEmailChanged'] = "Ihre E-Mail Adresse wurde geändert";

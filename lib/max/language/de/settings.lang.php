@@ -53,10 +53,6 @@ $GLOBALS['strUpgrade'] = "Programmaktualisierung (Upgrade)";
 
 // Global
 $GLOBALS['strChooseSection'] = "Bereichsauswahl";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "Die Änderungen konnten nicht in die Konfigurationsdatei übernommen werden";
 $GLOBALS['strUnableToWritePrefs'] = "Die Voreinstellungen konnten nicht in die Datenbank geschrieben werden.";
 $GLOBALS['strImageDirLockedDetected'] = "Für das angegebene <b>Banner-Verzeichnis</b> hat der Server keine Schreibrechte.<br>Sie können den Vorgang erst fortsetzen wenn Sie die Verzeichnisrechte ändern oder das Verzeichnis anlegen.";
@@ -169,9 +165,6 @@ $GLOBALS['strDeliveryFilenamesFlash'] = "Flash Include (Kann eine vollständige 
 $GLOBALS['strDeliveryCaching'] = "Allgemeine Einstellungen des Auslieferungs-Caches";
 $GLOBALS['strDeliveryCacheLimit'] = "Zeitintervall zwischen Cache-Aktualisierungen (in Sek.)";
 $GLOBALS['strDeliveryCacheStore'] = "Cache-Typ für die Bannerauslieferung";
-$GLOBALS['strDeliveryAcls'] = "Überprüfe die Auslieferungseinschränkungen eines Banners während der Auslieferung";
-$GLOBALS['strDeliveryAclsDirectSelection'] = "Überprüfe die Auslieferungsbedingungen bei \"Direct Selected\" Werbemitteln";
-$GLOBALS['strDeliveryObfuscate'] = "Bei der Auslieferung die Gruppe eines Werbemittels verschleiern";
 $GLOBALS['strDeliveryExecPhp'] = "PHP-Code in Werbemitteln wird ausgeführt<br />(Achtung: Starkes Sicherheitsrisiko)";
 $GLOBALS['strDeliveryCtDelimiter'] = "Begrenzung des 3rd Party Kick-Trackings";
 $GLOBALS['strGlobalDefaultBannerUrl'] = "Globale Default-Image-Banner URL";
@@ -189,7 +182,6 @@ $GLOBALS['defaultLanguage'] = "Voreinstellung der Systemsprache<br />(Jeder Benu
 $GLOBALS['strGeotargetingSettings'] = "Einstellungen Geotargeting";
 $GLOBALS['strGeotargeting'] = "Einstellungen Geotargeting";
 $GLOBALS['strGeotargetingType'] = "Typ des Geotargeting Moduls";
-$GLOBALS['strGeoShowUnavailable'] = "Zeige die durch Geotargeting verursachten Auslieferungslimitierungen an, auch wenn keine GeoIP-Daten verfügbar sind";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "Inventar-Seiten";
@@ -242,8 +234,6 @@ $GLOBALS['strBlockAdClicks'] = "Zähle keine Ad Klicks wenn der Betrachter auf d
 $GLOBALS['strMaintenanceOI'] = "Wartungsintervall (in Minuten)";
 $GLOBALS['strPrioritySettings'] = "Einstellung der Prioritäten";
 $GLOBALS['strPriorityInstantUpdate'] = "Sofortige Neuberechnung der Prioritäten nach Änderungen in der Benutzeroberfläche.";
-$GLOBALS['strDefaultImpConWindow'] = "Vorgabewert (in Sekunden) für das Zeitfenster von Ad Impressions bei der Neuanlage von Trackern";
-$GLOBALS['strDefaultCliConWindow'] = "Vorgabewert (in Sekunden) für das Zeitfenster von Ad Klicks bei der Neuanlage von Trackern";
 $GLOBALS['strAdminEmailHeaders'] = "Alle e-Mails, die von {$PRODUCT_NAME} gesendet werden, erhalten die folgenden Header hinzugefügt";
 $GLOBALS['strWarnLimit'] = "Warnung per E-Mail bei Unterschreiten der definierten Untergrenze";
 $GLOBALS['strWarnLimitDays'] = "Sende eine Warnung wenn weniger Tage verblieben sind als hier angegeben.";

@@ -29,14 +29,24 @@ MAX_commonRegisterGlobalsArray(array('zones' ,'source', 'block', 'blockcampaign'
 /* Main code                                             */
 /*-------------------------------------------------------*/
 
+// Protect from Reflected File Download attacks
+if (preg_match('/[^a-zA-Z0-9_-]/', $prefix)) {
+    MAX_sendStatusCode(400);
+    exit;
+}
+
 // Derive the source parameter
 $source = MAX_commonDeriveSource($source);
 
-$spc_output = array();
+$spc_output = [];
 
 if(!empty($zones)) {
     $zones = explode('|', $zones);
     foreach ($zones as $id => $thisZoneid) {
+        if (empty($thisZoneid)) {
+            continue;
+        }
+
         $zonename = $prefix.$id;
 
         // Clear deiveryData between iterations

@@ -17,19 +17,21 @@ $GLOBALS['strAdministrator'] = "Adminisztrátor";
 
 // Audit
 $GLOBALS['strDeleted'] = "Töröl";
+$GLOBALS['strUpdated'] = "frissítve";
 $GLOBALS['strDelete'] = "Töröl";
+$GLOBALS['strFilters'] = "Szűrők";
 $GLOBALS['strAdvertiser'] = "Hirdető";
+$GLOBALS['strPublisher'] = "Weboldal";
 $GLOBALS['strCampaign'] = "Kampány";
-$GLOBALS['strZone'] = "Nincs";
+$GLOBALS['strZone'] = "Zónák";
+$GLOBALS['strType'] = "Típus";
+$GLOBALS['strAction'] = "Művelet";
+$GLOBALS['strParameter'] = "Paraméter";
+$GLOBALS['strValue'] = "Érték";
+$GLOBALS['strCollectedAllEvents'] = "Összes esemény";
+$GLOBALS['strClear'] = "Töröl";
 
-$GLOBALS['strUserlog'] = array();
-$GLOBALS['strUserlog'][phpAds_actionAdvertiserReportMailed] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionActiveCampaign] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionAutoClean] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionBatchStatistics] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionDeactivationMailed] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionDeactiveCampaign] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionPriorityCalculation] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionPublisherReportMailed] = "Adatbázis automatikus tisztítása";
-$GLOBALS['strUserlog'][phpAds_actionWarningMailed] = "Adatbázis automatikus tisztítása";
+if (!isset($GLOBALS['strUserlog'])) {
+    $GLOBALS['strUserlog'] = array();
+}
 $GLOBALS['strUserlog'][phpAds_actionActivationMailed] = "Adatbázis automatikus tisztítása";

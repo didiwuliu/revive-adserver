@@ -89,8 +89,6 @@ $GLOBALS['strNotice'] = "提示";
 // Priority
 $GLOBALS['strPriority'] = "優先";
 $GLOBALS['strPriorityLevel'] = "優先級";
-$GLOBALS['strLimitations'] = "限制";
-$GLOBALS['strNoLimitations'] = "没有限制";
 $GLOBALS['strCapping'] = "上限";
 
 // Properties
@@ -173,9 +171,13 @@ $GLOBALS['strMonths'] = "月";
 $GLOBALS['strDayOfWeek'] = "周一至周七";
 
 
-$GLOBALS['strDayFullNames'] = array();
+if (!isset($GLOBALS['strDayFullNames'])) {
+    $GLOBALS['strDayFullNames'] = array();
+}
 
-$GLOBALS['strDayShortCuts'] = array();
+if (!isset($GLOBALS['strDayShortCuts'])) {
+    $GLOBALS['strDayShortCuts'] = array();
+}
 
 $GLOBALS['strHour'] = "小時";
 $GLOBALS['strSeconds'] = "秒";
@@ -188,7 +190,6 @@ $GLOBALS['strClients'] = "客戶";
 $GLOBALS['strClientsAndCampaigns'] = "廣告商與項目";
 $GLOBALS['strAddClient'] = "新增廣告商";
 $GLOBALS['strClientProperties'] = "廣告商屬性";
-$GLOBALS['strClientHistory'] = "廣告商歷史";
 $GLOBALS['strNoClients'] = "目前沒有廣告，請先<a href='advertiser-edit.php'>創建</a>";
 $GLOBALS['strConfirmDeleteClient'] = "您真的希望刪除該廣告商";
 $GLOBALS['strConfirmDeleteClients'] = "您真的希望刪除該廣告商";
@@ -212,7 +213,6 @@ $GLOBALS['strAddCampaign'] = "新增一個項目";
 $GLOBALS['strAddCampaign_Key'] = "新增<u>n</u>ew 項目";
 $GLOBALS['strCampaignProperties'] = "項目屬性";
 $GLOBALS['strCampaignOverview'] = "項目概要";
-$GLOBALS['strCampaignHistory'] = "項目歷史";
 $GLOBALS['strConfirmDeleteCampaign'] = "你是否希望刪除該項目";
 $GLOBALS['strConfirmDeleteCampaigns'] = "你是否希望刪除該項目";
 $GLOBALS['strShowParentAdvertisers'] = "顯示父客戶";
@@ -286,7 +286,6 @@ $GLOBALS['strAddBanner_Key'] = "<u>新增</u>一個廣告";
 $GLOBALS['strBannerToCampaign'] = "您的項目";
 $GLOBALS['strShowBanner'] = "顯示廣告";
 $GLOBALS['strBannerProperties'] = "廣告屬性";
-$GLOBALS['strBannerHistory'] = "廣告歷史";
 $GLOBALS['strNoBannersAddCampaign'] = "目前沒有網站，想要新建一個版位，請先<a href='affiliate-edit.php'>創建</a>一個網站";
 $GLOBALS['strNoBannersAddAdvertiser'] = "目前沒有網站，想要新建一個版位，請先<a href='affiliate-edit.php'>創建</a>一個網站";
 $GLOBALS['strConfirmDeleteBanner'] = "您是否真的希望刪除該廣告";
@@ -335,12 +334,9 @@ $GLOBALS['strSwfTransparency'] = "使用透明背景";
 $GLOBALS['strCompressSWF'] = "壓縮SWF文件（需要Flash 6 player)";
 $GLOBALS['strOverwriteSource'] = "覆蓋原參數";
 
-// Display limitations
+// Display Delviery Rules
 $GLOBALS['strModifyBannerAcl'] = "發送選項";
-$GLOBALS['strACL'] = "發送設置";
-$GLOBALS['strNoLimitations'] = "没有限制";
-$GLOBALS['strApplyLimitationsTo'] = "應用限制";
-$GLOBALS['strRemoveAllLimitations'] = "移除所有限制";
+$GLOBALS['strACL'] = "發送選項";
 $GLOBALS['strEqualTo'] = "等於";
 $GLOBALS['strDifferentFrom'] = "不同於";
 $GLOBALS['strGreaterThan'] = "大於";
@@ -350,19 +346,24 @@ $GLOBALS['strOR'] = "或";                         // logical operator
 $GLOBALS['strOnlyDisplayWhen'] = "當： 時候顯示這條廣告";
 $GLOBALS['strWeekDays'] = "工作日";
 $GLOBALS['strSource'] = "來源";
-$GLOBALS['strDeliveryLimitations'] = "發布限制";
 
 $GLOBALS['strDeliveryCappingReset'] = "於此時之後重新開始統計";
 $GLOBALS['strDeliveryCappingTotal'] = "合計";
 $GLOBALS['strDeliveryCappingSession'] = "平均每個線程";
 
-$GLOBALS['strCappingBanner'] = array();
+if (!isset($GLOBALS['strCappingBanner'])) {
+    $GLOBALS['strCappingBanner'] = array();
+}
 $GLOBALS['strCappingBanner']['limit'] = "限定廣告瀏覽數為:";
 
-$GLOBALS['strCappingCampaign'] = array();
+if (!isset($GLOBALS['strCappingCampaign'])) {
+    $GLOBALS['strCappingCampaign'] = array();
+}
 $GLOBALS['strCappingCampaign']['limit'] = "限定項目瀏覽數為:";
 
-$GLOBALS['strCappingZone'] = array();
+if (!isset($GLOBALS['strCappingZone'])) {
+    $GLOBALS['strCappingZone'] = array();
+}
 $GLOBALS['strCappingZone']['limit'] = "限定版位瀏覽數為:";
 
 // Website
@@ -371,7 +372,6 @@ $GLOBALS['strAffiliates'] = "網站";
 $GLOBALS['strAffiliatesAndZones'] = "網站和版位";
 $GLOBALS['strAddNewAffiliate'] = "新增一個網站";
 $GLOBALS['strAffiliateProperties'] = "網站屬性";
-$GLOBALS['strAffiliateHistory'] = "網站歷史記錄";
 $GLOBALS['strNoAffiliates'] = "目前沒有網站，想要新建一個版位，請先<a href='affiliate-edit.php'>創建</a>一個網站";
 $GLOBALS['strConfirmDeleteAffiliate'] = "確定刪除此網站？";
 $GLOBALS['strConfirmDeleteAffiliates'] = "確定刪除此網站？";
@@ -440,7 +440,6 @@ $GLOBALS['strSelectPlacement'] = "選擇項目";
 $GLOBALS['strSelectAd'] = "選擇廣告";
 $GLOBALS['strSelectPublisher'] = "選擇網站";
 $GLOBALS['strSelectZone'] = "選擇版位";
-$GLOBALS['strConnectionType'] = "類型";
 $GLOBALS['strStatusPending'] = "未決的";
 $GLOBALS['strStatusDuplicate'] = "複製";
 $GLOBALS['strConnectionType'] = "類型";
@@ -451,10 +450,6 @@ $GLOBALS['strShortcutShowStatuses'] = "顯示狀態";
 $GLOBALS['strStats'] = "統計";
 $GLOBALS['strNoStats'] = "沒有統計數據";
 $GLOBALS['strNoStatsForPeriod'] = "沒有統計數據可供百分比計算";
-$GLOBALS['strGlobalHistory'] = "全局歷史";
-$GLOBALS['strDailyHistory'] = "每日歷史";
-$GLOBALS['strDailyStats'] = "每日統計數據";
-$GLOBALS['strWeeklyHistory'] = "每週統計數據";
 $GLOBALS['strTotalThisPeriod'] = "在該期限之前累計";
 $GLOBALS['strPublisherDistribution'] = "網站發布數";
 $GLOBALS['strCampaignDistribution'] = "項目發布數";
@@ -475,7 +470,6 @@ $GLOBALS['strEstimated'] = "預期到期日";
 $GLOBALS['strCampaignStop'] = "項目歷史";
 
 // Reports
-$GLOBALS['strLimitations'] = "限制";
 
 // Admin_UI_Fields
 $GLOBALS['strAllAdvertisers'] = "所有客戶";
@@ -604,20 +598,9 @@ $GLOBALS['strHideInactiveAgencies'] = "藏不活躍的帳戶";
 $GLOBALS['strInactiveAgenciesHidden'] = "藏不活躍的帳戶";
 
 // Channels
-$GLOBALS['strChannel'] = "目標頻道";
-$GLOBALS['strChannels'] = "目標頻道";
-$GLOBALS['strChannelManagement'] = "目標頻道管理";
-$GLOBALS['strAddNewChannel'] = "新增一個目標頻道";
-$GLOBALS['strAddNewChannel_Key'] = "新增一個目標頻道";
 $GLOBALS['strChannelToWebsite'] = "沒有網站";
-$GLOBALS['strNoChannels'] = "尚未定義目標頻道";
-$GLOBALS['strNoChannelsAddWebsite'] = "目前沒有網站，想要新建一個版位，請先<a href='affiliate-edit.php'>創建</a>一個網站";
-$GLOBALS['strEditChannelLimitations'] = "編輯目標頻道限制";
-$GLOBALS['strChannelProperties'] = "目標頻道屬性";
 $GLOBALS['strChannelLimitations'] = "發送選項";
-$GLOBALS['strConfirmDeleteChannel'] = "您是否真的希望刪除該目標頻道";
-$GLOBALS['strConfirmDeleteChannels'] = "您是否真的希望刪除該目標頻道";
-$GLOBALS['strChannelsOfWebsite'] = '屬於'; //this is added between page name and website name eg. 'Targeting channels in www.example.com'
+$GLOBALS['strChannelsOfWebsite'] = '屬於'; //this is added between page name and website name eg. 'delivery rule sets in www.example.com'
 
 // Tracker Variables
 $GLOBALS['strVariableName'] = "變量名";
@@ -645,7 +628,6 @@ $GLOBALS['strVariableCode'] = "JavaScript跟蹤代碼";
 $GLOBALS['strForgotPassword'] = "忘記密碼？";
 $GLOBALS['strPasswordRecovery'] = "密碼恢復";
 $GLOBALS['strEmailRequired'] = "電子郵件為必填項";
-$GLOBALS['strPwdRecEmailNotFound'] = "沒有該電子郵件地址";
 $GLOBALS['strPwdRecWrongId'] = "錯誤ID";
 $GLOBALS['strPwdRecEnterEmail'] = "請填入你的郵件地址";
 $GLOBALS['strPwdRecEnterPassword'] = "請填入新密碼";

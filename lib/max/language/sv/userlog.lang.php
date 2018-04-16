@@ -18,7 +18,7 @@ $GLOBALS['strAdministrator'] = "Administratör";
 // Audit
 $GLOBALS['strDeleted'] = "raderade";
 $GLOBALS['strInserted'] = "lade till";
-$GLOBALS['strUpdated'] = "aktualiserade";
+$GLOBALS['strUpdated'] = "uppdaterat";
 $GLOBALS['strDelete'] = "Radera";
 $GLOBALS['strHas'] = "har";
 $GLOBALS['strFilters'] = "Filter";
@@ -28,6 +28,7 @@ $GLOBALS['strCampaign'] = "Kampanj";
 $GLOBALS['strZone'] = "Zon";
 $GLOBALS['strType'] = "Typ";
 $GLOBALS['strAction'] = "Handling";
+$GLOBALS['strParameter'] = "Parameter";
 $GLOBALS['strValue'] = "Värde";
 $GLOBALS['strReturnAuditTrail'] = "Återvänd till Auditlista";
 $GLOBALS['strAuditTrail'] = "Auditlista";
@@ -36,14 +37,16 @@ $GLOBALS['strAuditResultsNotFound'] = "Inga händelser passar till valda kriteri
 $GLOBALS['strCollectedAllEvents'] = "Alla händelser";
 $GLOBALS['strClear'] = "Rensa";
 
-$GLOBALS['strUserlog'] = array();
-$GLOBALS['strUserlog'][phpAds_actionAdvertiserReportMailed] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionActiveCampaign] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionAutoClean] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionBatchStatistics] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionDeactivationMailed] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionDeactiveCampaign] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionPriorityCalculation] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionPublisherReportMailed] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
-$GLOBALS['strUserlog'][phpAds_actionWarningMailed] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";
+if (!isset($GLOBALS['strUserlog'])) {
+    $GLOBALS['strUserlog'] = array();
+}
+$GLOBALS['strUserlog'][phpAds_actionAdvertiserReportMailed] = "Rapport för annonsör {id} skicka via e-post";
+$GLOBALS['strUserlog'][phpAds_actionActiveCampaign] = "Kampanj {id} aktiverad";
+$GLOBALS['strUserlog'][phpAds_actionAutoClean] = "Automatisk rengöring av databasen";
+$GLOBALS['strUserlog'][phpAds_actionBatchStatistics] = "Statistik sammanställd";
+$GLOBALS['strUserlog'][phpAds_actionDeactivationMailed] = "Inaktiveringsanmälan för kampanj {id} skicka via e-post";
+$GLOBALS['strUserlog'][phpAds_actionDeactiveCampaign] = "Kampanj {id} avaktiverad";
+$GLOBALS['strUserlog'][phpAds_actionPriorityCalculation] = "Prioritet omräknad";
+$GLOBALS['strUserlog'][phpAds_actionPublisherReportMailed] = "Rapport för webbplatsen {id} skicka via e-post";
+$GLOBALS['strUserlog'][phpAds_actionWarningMailed] = "Inaktiveringsvarning för kampanj {id} skicka via e-post";
 $GLOBALS['strUserlog'][phpAds_actionActivationMailed] = "Aktiveringsmeddelande för kampanj {id} skickat per epost";

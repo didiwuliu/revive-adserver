@@ -44,10 +44,6 @@ $GLOBALS['strImagesUrlPrefixSSL'] = "Vaizdų išsaugojimo URL (SSL)";
 
 // Global
 $GLOBALS['strChooseSection'] = "Pasirinkti dalį";
-$GLOBALS['strEditConfigNotPossible'] = "It is not possible to edit all settings because the configuration file is locked for security reasons. " .
-    "If you want to make changes, you may need to unlock the configuration file for this installation first.";
-$GLOBALS['strEditConfigPossible'] = "It is possible to edit all settings because the configuration file is not locked, but this could lead to security issues. " .
-    "If you want to secure your system, you need to lock the configuration file for this installation.";
 $GLOBALS['strUnableToWriteConfig'] = "Neįmano įrašyti pakeitimų į šiuos konfigūracijos failus";
 $GLOBALS['strUnableToWritePrefs'] = "Neįmanoma nustatyti pirmenybių duomenų bazėje";
 $GLOBALS['strImageDirLockedDetected'] = "Pateiktas <b>Paveikslėlių aplankas</b> nėra įrašomas per serverį. <br> Jūs negalite tęsti kol nepakeitėte aplankų galimų leidimų arba nesukūrėte naujo aplanko.";
@@ -154,8 +150,6 @@ $GLOBALS['strDeliveryFilenamesFrontController'] = "Priekinis tikrintojas";
 $GLOBALS['strDeliveryFilenamesFlash'] = "Pridėti Flash (gali būti pilnas URL)";
 $GLOBALS['strDeliveryCaching'] = "Banerio pristatymo kelio nustatymai";
 $GLOBALS['strDeliveryCacheLimit'] = "Laikas ";
-$GLOBALS['strDeliveryAcls'] = "Nustatyti banerio pristatymo limitus per patį pristatymą";
-$GLOBALS['strDeliveryObfuscate'] = "Užtamsyti kanalą, kai pridedamas pristatymas";
 $GLOBALS['strDeliveryExecPhp'] = "Leisti PHP kodui, kai pridedamas būti pašalintam<br />(Įspėjimas: Security risk)";
 $GLOBALS['strDeliveryCtDelimiter'] = "Trečiosios šalies paspaudimų seklio delimiter";
 $GLOBALS['strP3PSettings'] = "P3P privatumo politika";
@@ -169,7 +163,6 @@ $GLOBALS['strP3PPolicyLocation'] = "P3P vietos politika";
 $GLOBALS['strGeotargetingSettings'] = "Geotargeting nustatymai";
 $GLOBALS['strGeotargeting'] = "Geotargeting nustatymai";
 $GLOBALS['strGeotargetingType'] = "Geotargeting modulio tipas";
-$GLOBALS['strGeoShowUnavailable'] = "Rodyti geotargeting pristatymo limitus net jei GeoIP duomenys negalimi";
 
 // Interface Settings
 $GLOBALS['strInventory'] = "Inventorius";
@@ -217,8 +210,6 @@ $GLOBALS['strBlockAdClicks'] = "Neskaičiuoti paspaudimų jei peržiūrėtojas p
 $GLOBALS['strMaintenanceOI'] = "Techninio aptarnavimo intervalas (minutės)";
 $GLOBALS['strPrioritySettings'] = "Pirmenybės nustatymai";
 $GLOBALS['strPriorityInstantUpdate'] = "Atnaujinti reklamos pirmenybės iš karto kai tik atliekami bet kokie UI pasikeitimai";
-$GLOBALS['strDefaultImpConWindow'] = "Pagrindinis įspūdžių/nuomonių prisijungimo langas (sekundės)";
-$GLOBALS['strDefaultCliConWindow'] = "Pagrindinis Ad paspaudimų prisijungimo langas (sekundėmis)";
 $GLOBALS['strWarnLimit'] = "Išsiųsti įspėjimą kai įspūdžių/nuomonių skaičius yra mažesnis nei nurodyta čia";
 $GLOBALS['strWarnLimitDays'] = "Siųsti įspėjimą kai likę dienų mažiau nei nurodyta čia";
 $GLOBALS['strWarnAdmin'] = "Išsiųsti įspėjimą administratoriui kiekvieną kartą kai kampanijos galiojimo laikas beveik pasibaigė";

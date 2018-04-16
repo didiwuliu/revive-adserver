@@ -107,8 +107,6 @@ $GLOBALS['strPriority'] = "優先度";
 $GLOBALS['strPriorityLevel'] = "優先度レベル";
 $GLOBALS['strHighAds'] = "高優先広告";
 $GLOBALS['strLowAds'] = "低優先広告";
-$GLOBALS['strLimitations'] = "制限";
-$GLOBALS['strNoLimitations'] = "配信制限が定義されていません";
 $GLOBALS['strCapping'] = "制限";
 
 // Properties
@@ -208,9 +206,13 @@ $GLOBALS['strMonths'] = "月";
 $GLOBALS['strDayOfWeek'] = "曜日";
 
 
-$GLOBALS['strDayFullNames'] = array();
+if (!isset($GLOBALS['strDayFullNames'])) {
+    $GLOBALS['strDayFullNames'] = array();
+}
 
-$GLOBALS['strDayShortCuts'] = array();
+if (!isset($GLOBALS['strDayShortCuts'])) {
+    $GLOBALS['strDayShortCuts'] = array();
+}
 
 $GLOBALS['strHour'] = "時";
 $GLOBALS['strSeconds'] = "秒間";
@@ -223,7 +225,6 @@ $GLOBALS['strClients'] = "広告主";
 $GLOBALS['strClientsAndCampaigns'] = "広告主＆キャンペーン";
 $GLOBALS['strAddClient'] = "広告主の追加";
 $GLOBALS['strClientProperties'] = "広告主の詳細";
-$GLOBALS['strClientHistory'] = "広告主の状況";
 $GLOBALS['strNoClients'] = "広告主が存在しません。キャンペーンを作成するためには、先に<a href='advertiser-edit.php'>広告主の作成</a>をして下さい。";
 $GLOBALS['strConfirmDeleteClient'] = "この広告主を本当に削除しますか？";
 $GLOBALS['strConfirmDeleteClients'] = "この広告主を本当に削除しますか？";
@@ -254,7 +255,6 @@ $GLOBALS['strAddCampaign_Key'] = "キャンペーンの追加 (<u>n</u>)";
 $GLOBALS['strLinkedCampaigns'] = "リンク済キャンペーン";
 $GLOBALS['strCampaignProperties'] = "キャンペーン詳細";
 $GLOBALS['strCampaignOverview'] = "キャンペーン概要";
-$GLOBALS['strCampaignHistory'] = "キャンペーン状況";
 $GLOBALS['strNoCampaigns'] = "キャンペーンが定義されていません";
 $GLOBALS['strConfirmDeleteCampaign'] = "このキャンペーンを本当に削除しますか？";
 $GLOBALS['strConfirmDeleteCampaigns'] = "このキャンペーンを本当に削除しますか？";
@@ -337,7 +337,6 @@ $GLOBALS['strAddBanner_Key'] = "バナーの追加 (<u>n</u>)";
 $GLOBALS['strBannerToCampaign'] = "対象キャンペーン";
 $GLOBALS['strShowBanner'] = "バナーの表示";
 $GLOBALS['strBannerProperties'] = "バナーの詳細";
-$GLOBALS['strBannerHistory'] = "バナーの状況";
 $GLOBALS['strNoBanners'] = "バナーは1件も定義されていません";
 $GLOBALS['strNoBannersAddCampaign'] = "Webサイトが存在しません。広告枠を作成する前に、先に<a href='affiliate-edit.php'>Webサイトを作成</a>して下さい。";
 $GLOBALS['strNoBannersAddAdvertiser'] = "Webサイトが存在しません。広告枠を作成する前に、先に<a href='affiliate-edit.php'>Webサイトを作成</a>して下さい。";
@@ -396,13 +395,9 @@ $GLOBALS['strHardcodedLinks'] = "ハードコーデッドリンク";
 $GLOBALS['strCompressSWF'] = "ダウンロード時間を短くするため、Flashファイルを圧縮する(Flash6プレーヤー以降が必要)";
 $GLOBALS['strOverwriteSource'] = "ソースパラメータを上書きする";
 
-// Display limitations
+// Display Delviery Rules
 $GLOBALS['strModifyBannerAcl'] = "配信オプション";
-$GLOBALS['strACL'] = "広告配信";
-$GLOBALS['strACLAdd'] = "配信制限の追加";
-$GLOBALS['strNoLimitations'] = "配信制限が定義されていません";
-$GLOBALS['strApplyLimitationsTo'] = "配信制限を適用する";
-$GLOBALS['strRemoveAllLimitations'] = "すべての配信制限を削除";
+$GLOBALS['strACL'] = "配信オプション";
 $GLOBALS['strEqualTo'] = "一致する";
 $GLOBALS['strDifferentFrom'] = "一致しない";
 $GLOBALS['strGreaterThan'] = "以下よりも大きい";
@@ -412,19 +407,24 @@ $GLOBALS['strOR'] = "または";                         // logical operator
 $GLOBALS['strOnlyDisplayWhen'] = "バナー表示日時:";
 $GLOBALS['strWeekDays'] = "平日";
 $GLOBALS['strSource'] = "ソースパラメータ";
-$GLOBALS['strDeliveryLimitations'] = "配信先";
 
 $GLOBALS['strDeliveryCappingReset'] = "カウンタリセット条件：";
 $GLOBALS['strDeliveryCappingTotal'] = "総配信数";
 $GLOBALS['strDeliveryCappingSession'] = "／セッション";
 
-$GLOBALS['strCappingBanner'] = array();
+if (!isset($GLOBALS['strCappingBanner'])) {
+    $GLOBALS['strCappingBanner'] = array();
+}
 $GLOBALS['strCappingBanner']['limit'] = "バナービュー上限数";
 
-$GLOBALS['strCappingCampaign'] = array();
+if (!isset($GLOBALS['strCappingCampaign'])) {
+    $GLOBALS['strCappingCampaign'] = array();
+}
 $GLOBALS['strCappingCampaign']['limit'] = "キャンペーンビュー上限数";
 
-$GLOBALS['strCappingZone'] = array();
+if (!isset($GLOBALS['strCappingZone'])) {
+    $GLOBALS['strCappingZone'] = array();
+}
 $GLOBALS['strCappingZone']['limit'] = "ゾーンビュー上限数";
 
 // Website
@@ -433,7 +433,6 @@ $GLOBALS['strAffiliates'] = "Webサイト";
 $GLOBALS['strAffiliatesAndZones'] = "Webサイト＆ゾーン";
 $GLOBALS['strAddNewAffiliate'] = "Webサイトの追加";
 $GLOBALS['strAffiliateProperties'] = "Webサイトの詳細";
-$GLOBALS['strAffiliateHistory'] = "Webサイトの状況";
 $GLOBALS['strNoAffiliates'] = "Webサイトが存在しません。広告枠を作成する前に、先に<a href='affiliate-edit.php'>Webサイトを作成</a>して下さい。";
 $GLOBALS['strConfirmDeleteAffiliate'] = "このWebサイトを本当に削除しますか?";
 $GLOBALS['strConfirmDeleteAffiliates'] = "このWebサイトを本当に削除しますか?";
@@ -529,7 +528,6 @@ $GLOBALS['strSelectPlacement'] = "キャンペーンを選択してください"
 $GLOBALS['strSelectAd'] = "バナーを選択してください";
 $GLOBALS['strSelectPublisher'] = "Webサイトを選択してください";
 $GLOBALS['strSelectZone'] = "ゾーンを選択してください";
-$GLOBALS['strConnectionType'] = "タイプ";
 $GLOBALS['strStatusPending'] = "保留";
 $GLOBALS['strStatusDuplicate'] = "複製する";
 $GLOBALS['strConnectionType'] = "タイプ";
@@ -540,11 +538,6 @@ $GLOBALS['strShortcutShowStatuses'] = "ステータスを見る";
 $GLOBALS['strStats'] = "統計";
 $GLOBALS['strNoStats'] = "利用可能な統計データはありません。";
 $GLOBALS['strNoStatsForPeriod'] = "%s から %s の期間に利用可能な統計データはありません。";
-$GLOBALS['strGlobalHistory'] = "活動概況";
-$GLOBALS['strDailyHistory'] = "日別状況";
-$GLOBALS['strDailyStats'] = "日別統計";
-$GLOBALS['strWeeklyHistory'] = "週間状況";
-$GLOBALS['strMonthlyHistory'] = "月間状況";
 $GLOBALS['strTotalThisPeriod'] = "期間合計";
 $GLOBALS['strPublisherDistribution'] = "Webサイト別配信";
 $GLOBALS['strCampaignDistribution'] = "キャンペーン別配信";
@@ -569,7 +562,6 @@ $GLOBALS['strCampaignStop'] = "キャンペーン中断";
 
 // Reports
 $GLOBALS['strPeriod'] = "期限";
-$GLOBALS['strLimitations'] = "制限";
 
 // Admin_UI_Fields
 $GLOBALS['strAllAdvertisers'] = "すべての広告主";
@@ -599,7 +591,6 @@ $GLOBALS['strAutoDetect'] = "自動検出";
 
 
 // Errors
-$GLOBALS['strErrorCantConnectToDatabase'] = "重大なエラーが発生しました。{$PRODUCT_NAME}はデータベースに接続できません。このため、管理者インタフェースにアクセスできません。バナー配信に影響があるかもしれません。想定される理由は次のとおりです:<ul><li>データベースサーバが一時的に利用できない状態になっている</li><li>データベースサーバのホスト名やIPアドレスが変更された</li><li>データベース接続用ユーザ名とパスワードが間違っている</li><li>PHPがMySQL拡張プラグインをロードしていない</li></ul>";
 $GLOBALS['strNoMatchesFound'] = "一致するものは見つかりません";
 $GLOBALS['strErrorOccurred'] = "エラーが発生しました";
 $GLOBALS['strErrorDBPlain'] = "データベースにアクセス中にエラーが発生しました。";
@@ -732,20 +723,9 @@ $GLOBALS['strInactiveAgenciesHidden'] = "非表示のアカウントを無効に
 $GLOBALS['strSwitchAccount'] = "アカウントの変更";
 
 // Channels
-$GLOBALS['strChannel'] = "ターゲットチャンネル";
-$GLOBALS['strChannels'] = "ターゲットチャンネル";
-$GLOBALS['strChannelManagement'] = "ターゲットチャンネル管理";
-$GLOBALS['strAddNewChannel'] = "ターゲットチャンネルを追加";
-$GLOBALS['strAddNewChannel_Key'] = "新しいターゲットチャンネルを追加する(<u>n</u>)";
 $GLOBALS['strChannelToWebsite'] = "すべてのWebサイト";
-$GLOBALS['strNoChannels'] = "チャンネルが存在しません";
-$GLOBALS['strNoChannelsAddWebsite'] = "Webサイトが存在しません。広告枠を作成する前に、先に<a href='affiliate-edit.php'>Webサイトを作成</a>して下さい。";
-$GLOBALS['strEditChannelLimitations'] = "ターゲットチャンネルの制限を変更する";
-$GLOBALS['strChannelProperties'] = "ターゲットチャンネルの設定";
 $GLOBALS['strChannelLimitations'] = "配信オプション";
-$GLOBALS['strConfirmDeleteChannel'] = "このチャンネルを本当に削除しますか？";
-$GLOBALS['strConfirmDeleteChannels'] = "このチャンネルを本当に削除しますか？";
-$GLOBALS['strChannelsOfWebsite'] = '内の'; //this is added between page name and website name eg. 'Targeting channels in www.example.com'
+$GLOBALS['strChannelsOfWebsite'] = '内の'; //this is added between page name and website name eg. 'delivery rule sets in www.example.com'
 
 // Tracker Variables
 $GLOBALS['strVariableName'] = "トラッカー変数名";
@@ -774,7 +754,6 @@ $GLOBALS['strVariableCode'] = "トラッカー用Javascriptコード";
 $GLOBALS['strForgotPassword'] = "パスワードを忘れた？";
 $GLOBALS['strPasswordRecovery'] = "パスワードのリカバリ";
 $GLOBALS['strEmailRequired'] = "メールアドレスは必須です。";
-$GLOBALS['strPwdRecEmailNotFound'] = "指定したメールアドレスは見つかりませんでした。";
 $GLOBALS['strPwdRecWrongId'] = "メールアドレスが間違っています。";
 $GLOBALS['strPwdRecEnterEmail'] = "メールアドレスを入力してください";
 $GLOBALS['strPwdRecEnterPassword'] = "新しいパスワードを入力してください";
@@ -804,7 +783,6 @@ $GLOBALS['strCampaignNoDataTimeSpan'] = "選択した期間内において、開
 $GLOBALS['strCampaignAuditTrailSetup'] = "キャンペーンの活動状況を確認するため、追跡記録をアクティブにする";
 
 $GLOBALS['strUnsavedChanges'] = "変更が保存されていません。\"保存する\"ボタンを押してください。";
-$GLOBALS['strDeliveryLimitationsDisagree'] = "注意：配信エンジン制限です。<strong>絶対に</strong>以下の制限を承認しないでください<br />配信エンジンのルールを保存してください。";
 
 //confirmation messages
 

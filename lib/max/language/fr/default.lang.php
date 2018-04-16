@@ -117,8 +117,6 @@ $GLOBALS['strOverrideAds'] = "Outrepasser la publicité de la campagne";
 $GLOBALS['strHighAds'] = "Publicités sous contrat";
 $GLOBALS['strECPMAds'] = "Publicité de la campagne eCPM";
 $GLOBALS['strLowAds'] = "Publicités restantes";
-$GLOBALS['strLimitations'] = "Limites";
-$GLOBALS['strNoLimitations'] = "Aucune limitation";
 $GLOBALS['strCapping'] = "Plafonner";
 
 // Properties
@@ -224,9 +222,13 @@ $GLOBALS['strMonths'] = "Mois";
 $GLOBALS['strDayOfWeek'] = "Jour de la semaine";
 
 
-$GLOBALS['strDayFullNames'] = array();
+if (!isset($GLOBALS['strDayFullNames'])) {
+    $GLOBALS['strDayFullNames'] = array();
+}
 
-$GLOBALS['strDayShortCuts'] = array();
+if (!isset($GLOBALS['strDayShortCuts'])) {
+    $GLOBALS['strDayShortCuts'] = array();
+}
 
 $GLOBALS['strHour'] = "Heure";
 $GLOBALS['strSeconds'] = "secondes";
@@ -239,7 +241,6 @@ $GLOBALS['strClients'] = "Annonceurs";
 $GLOBALS['strClientsAndCampaigns'] = "Annonceurs & Campagnes";
 $GLOBALS['strAddClient'] = "Ajouter un nouvel annonceur";
 $GLOBALS['strClientProperties'] = "Propriétés de l'annonceur";
-$GLOBALS['strClientHistory'] = "Historique de l'annonceur";
 $GLOBALS['strNoClients'] = "Il n'y a actuellement aucun annonceur défini. Pour créer une campagne, commencez par <a href='advertiser-edit.php'>ajouter un nouvel annonceur</a>.";
 $GLOBALS['strConfirmDeleteClient'] = "Voulez-vous vraiment supprimer cet annonceur ?";
 $GLOBALS['strConfirmDeleteClients'] = "Voulez-vous vraiment supprimer les annonceurs sélectionnés ?";
@@ -271,7 +272,6 @@ $GLOBALS['strCampaignForAdvertiser'] = "Pour l'annonceur";
 $GLOBALS['strLinkedCampaigns'] = "Campagnes liées";
 $GLOBALS['strCampaignProperties'] = "Propriétés de la campagne";
 $GLOBALS['strCampaignOverview'] = "Vue d'ensemble des campagnes";
-$GLOBALS['strCampaignHistory'] = "Historique de la campagne";
 $GLOBALS['strNoCampaigns'] = "Il n'y a actuellement aucune campagne définie pour cet annonceur.";
 $GLOBALS['strNoCampaignsAddAdvertiser'] = "Il n'y a pas de campagnes à présent parce qu'il n'y a pas d'annonceurs. Pour créer une campagne, <a href='advertiser-edit.php'>ajouter un nouvel annonceur</a> premièrement.";
 $GLOBALS['strConfirmDeleteCampaign'] = "Voulez-vous vraiment supprimer cette campagne ?";
@@ -395,7 +395,6 @@ $GLOBALS['strAddBanner_Key'] = "Ajouter une <u>n</u>ouvelle bannière";
 $GLOBALS['strBannerToCampaign'] = "vers la campagne";
 $GLOBALS['strShowBanner'] = "Afficher la bannière";
 $GLOBALS['strBannerProperties'] = "Propriétés de la bannière";
-$GLOBALS['strBannerHistory'] = "Historique de la bannière";
 $GLOBALS['strNoBanners'] = "Il n'y a actuellement aucune bannière définie pour cette campagne.";
 $GLOBALS['strNoBannersAddCampaign'] = "Il n'y a pas actuellement de bannières définies, parce qu'il n'existe pas de campagne. Pour créer une bannière, <a href='campaign-edit.php?clientid=%s'>ajouter une nouvelle campagne</a> d'abord.";
 $GLOBALS['strNoBannersAddAdvertiser'] = "Il n'y a actuellement aucunes bannières définies, parce qu'il n'y a pas d'annonceurs. Pour créer une bannière, commencez par <a href='affiliate-edit.php'>ajouter un nouvel annonceur</a>.";
@@ -453,14 +452,10 @@ $GLOBALS['strHardcodedLinks'] = "Liens codés en dur";
 $GLOBALS['strCompressSWF'] = "Compresser le fichier SWF pour un téléchargement plus rapide (Flash Player 6 requis)";
 $GLOBALS['strOverwriteSource'] = "Écraser le paramètre source";
 
-// Display limitations
+// Display Delviery Rules
 $GLOBALS['strModifyBannerAcl'] = "Options de distribution";
-$GLOBALS['strACL'] = "Distribution";
-$GLOBALS['strACLAdd'] = "Ajouter une limitation de distribution";
-$GLOBALS['strNoLimitations'] = "Aucune limitation";
-$GLOBALS['strApplyLimitationsTo'] = "Appliquer les limitations à";
+$GLOBALS['strACL'] = "Options de distribution";
 $GLOBALS['strAllBannersInCampaign'] = "Toutes les bannières dans cette campagne";
-$GLOBALS['strRemoveAllLimitations'] = "Supprimer toutes les limitations";
 $GLOBALS['strEqualTo'] = "est égal à";
 $GLOBALS['strDifferentFrom'] = "est différent de";
 $GLOBALS['strGreaterThan'] = "est plus grand que";
@@ -469,19 +464,24 @@ $GLOBALS['strAND'] = "ET";                          // logical operator
 $GLOBALS['strOR'] = "OU";                         // logical operator
 $GLOBALS['strOnlyDisplayWhen'] = "Afficher seulement cette bannière quand :";
 $GLOBALS['strWeekDays'] = "Jours de la semaine";
-$GLOBALS['strDeliveryLimitations'] = "Limitations de distribution";
 
 $GLOBALS['strDeliveryCappingReset'] = "Réinitialiser les compteurs d'affichages après :";
 $GLOBALS['strDeliveryCappingTotal'] = "au total";
 $GLOBALS['strDeliveryCappingSession'] = "par session";
 
-$GLOBALS['strCappingBanner'] = array();
+if (!isset($GLOBALS['strCappingBanner'])) {
+    $GLOBALS['strCappingBanner'] = array();
+}
 $GLOBALS['strCappingBanner']['limit'] = "Limiter les affichages de la bannière à :";
 
-$GLOBALS['strCappingCampaign'] = array();
+if (!isset($GLOBALS['strCappingCampaign'])) {
+    $GLOBALS['strCappingCampaign'] = array();
+}
 $GLOBALS['strCappingCampaign']['limit'] = "Limiter les affichages de la campagne à :";
 
-$GLOBALS['strCappingZone'] = array();
+if (!isset($GLOBALS['strCappingZone'])) {
+    $GLOBALS['strCappingZone'] = array();
+}
 $GLOBALS['strCappingZone']['limit'] = "Limiter les affichages de la zone à :";
 
 // Website
@@ -490,7 +490,6 @@ $GLOBALS['strAffiliates'] = "Sites web";
 $GLOBALS['strAffiliatesAndZones'] = "Sites web & Zones";
 $GLOBALS['strAddNewAffiliate'] = "Ajouter un nouveau site web";
 $GLOBALS['strAffiliateProperties'] = "Propriétés du site web";
-$GLOBALS['strAffiliateHistory'] = "Historique du site web";
 $GLOBALS['strNoAffiliates'] = "Il n'y a actuellement aucun site web défini. Pour créer une zone, commencez par <a href='affiliate-edit.php'>ajouter un nouveau site web</a>.";
 $GLOBALS['strConfirmDeleteAffiliate'] = "Voulez-vous vraiment supprimer ce site web ?";
 $GLOBALS['strConfirmDeleteAffiliates'] = "Voulez-vous vraiment supprimer le site web sélectionné?";
@@ -605,7 +604,6 @@ $GLOBALS['strSelectPlacement'] = "Sélectionner la campagne";
 $GLOBALS['strSelectAd'] = "Sélectionne la bannière";
 $GLOBALS['strSelectPublisher'] = "Sélectionnez un site web";
 $GLOBALS['strSelectZone'] = "Sélectionnez un zone";
-$GLOBALS['strConnectionType'] = "Type";
 $GLOBALS['strStatusPending'] = "Suspendue";
 $GLOBALS['strStatusDuplicate'] = "Doubler";
 $GLOBALS['strConnectionType'] = "Type";
@@ -616,11 +614,6 @@ $GLOBALS['strShortcutShowStatuses'] = "Afficher les états";
 $GLOBALS['strStats'] = "Statistiques";
 $GLOBALS['strNoStats'] = "Il n'y a actuellement aucunes statistiques disponibles";
 $GLOBALS['strNoStatsForPeriod'] = "Il n'y actuellement aucunes statistiques disponibles pour la période du %s au %S";
-$GLOBALS['strGlobalHistory'] = "Historique global";
-$GLOBALS['strDailyHistory'] = "Historique quotidien";
-$GLOBALS['strDailyStats'] = "Statistiques quotidiennes";
-$GLOBALS['strWeeklyHistory'] = "Historique hebdomadaire";
-$GLOBALS['strMonthlyHistory'] = "Historique mensuel";
 $GLOBALS['strTotalThisPeriod'] = "Total de cette période";
 $GLOBALS['strPublisherDistribution'] = "Distribution par site web";
 $GLOBALS['strCampaignDistribution'] = "Distribution par campagne";
@@ -631,10 +624,6 @@ $GLOBALS['strBreakdownByMonth'] = "Mois";
 $GLOBALS['strBreakdownByDow'] = "Jour de la semaine";
 $GLOBALS['strBreakdownByHour'] = "Heure";
 $GLOBALS['strItemsPerPage'] = "Objets par page";
-$GLOBALS['strDistributionHistoryCampaign'] = "Historique de distribution (Campagne)";
-$GLOBALS['strDistributionHistoryBanner'] = "Historique de distribution (Bannière)";
-$GLOBALS['strDistributionHistoryWebsite'] = "Historique de distribution (site internet)";
-$GLOBALS['strDistributionHistoryZone'] = "Historique de distribution (zone)";
 $GLOBALS['strShowGraphOfStatistics'] = "Afficher le <u>g</u>raphique des statistiques";
 $GLOBALS['strExportStatisticsToExcel'] = "<u>E</u>xporter les statistiques vers Excel";
 $GLOBALS['strGDnotEnabled'] = "Vous devez avoir GD activé dans PHP pour afficher les graphiques. <br />Veuillez visiter <a href='http://www.php.net/gd' target='_blank'>http://www.php.net/gd</a> pour plus d'informations, y compris comment installer GD sur votre serveur.";
@@ -650,7 +639,6 @@ $GLOBALS['strCampaignStop'] = "Arrêt de la campagne";
 // Reports
 $GLOBALS['strAdvancedReports'] = "Rapports détaillés";
 $GLOBALS['strPeriod'] = "Période";
-$GLOBALS['strLimitations'] = "Limites";
 
 // Admin_UI_Fields
 $GLOBALS['strAllAdvertisers'] = "Tous les annonceurs";
@@ -681,8 +669,6 @@ $GLOBALS['strCacheBusterComment'] = "* Remplacez toutes les cas de {random} avec
 
 
 // Errors
-$GLOBALS['strErrorDatabaseConnetion'] = "Erreur de connexion à la base de données.";
-$GLOBALS['strErrorCantConnectToDatabase'] = "Une erreur fatale est survenue %s ne peut pas se connecter à la base de données. Pour cette raison il est impossible d'utiliser l'interface d'administration. La distribution des bannières pourrait aussi être affectée. Les causes possibles de ce problème sont : <ul> <li>Le serveur de base de données ne fonctionne pas pour le moment</li> <li>L'emplacement du serveur de base de données a changé</li> <li>L'identifiant ou le mot de passe utilisés pour contacter la base de données sont incorrects</li> <li>PHP n'a pas chargé l'extension MySQL</li> </ul>";
 $GLOBALS['strNoMatchesFound'] = "Aucun résultat correspondant trouvé";
 $GLOBALS['strErrorOccurred'] = "Une erreur est survenue";
 $GLOBALS['strErrorDBPlain'] = "Une erreur est survenue lors de l'accès à la base de données";
@@ -828,20 +814,9 @@ $GLOBALS['strInactiveAgenciesHidden'] = "compte(s) inactif(s) masqué(s)";
 $GLOBALS['strSwitchAccount'] = "Basculer vers ce compte";
 
 // Channels
-$GLOBALS['strChannel'] = "Canal de ciblage";
-$GLOBALS['strChannels'] = "Canaux de ciblage";
-$GLOBALS['strChannelManagement'] = "Gestion des canaux de ciblage";
-$GLOBALS['strAddNewChannel'] = "Ajouter un canal de ciblage";
-$GLOBALS['strAddNewChannel_Key'] = "Ajouter un <u>n</u>ouveau canal de ciblage";
 $GLOBALS['strChannelToWebsite'] = "vers le site web";
-$GLOBALS['strNoChannels'] = "Il n'y a actuellement aucun canal de ciblage défini";
-$GLOBALS['strNoChannelsAddWebsite'] = "Il n'y a actuellement aucuns canaux ciblés définis, parce qu'il n'y a pas de sites. Pour créer un canal ciblé, <a href='affiliate-edit.php'>ajouter un nouveau site web</a> d'abord.";
-$GLOBALS['strEditChannelLimitations'] = "Éditer les limitations du canal de ciblage";
-$GLOBALS['strChannelProperties'] = "Propriétés du canal de ciblage";
 $GLOBALS['strChannelLimitations'] = "Options de distribution";
-$GLOBALS['strConfirmDeleteChannel'] = "Voulez-vous vraiment supprimer ce canal de ciblage ?";
-$GLOBALS['strConfirmDeleteChannels'] = "Voulez-vous vraiment supprimer ce canal ciblé ?";
-$GLOBALS['strChannelsOfWebsite'] = 'dans'; //this is added between page name and website name eg. 'Targeting channels in www.example.com'
+$GLOBALS['strChannelsOfWebsite'] = 'dans'; //this is added between page name and website name eg. 'delivery rule sets in www.example.com'
 
 // Tracker Variables
 $GLOBALS['strVariableName'] = "Nom de la variable";
@@ -870,7 +845,6 @@ $GLOBALS['strVariableCode'] = "Code de suivi Javascript";
 $GLOBALS['strForgotPassword'] = "Mot de passe oublié ?";
 $GLOBALS['strPasswordRecovery'] = "Récupération du mot de passe";
 $GLOBALS['strEmailRequired'] = "Le champ e-mail est requis";
-$GLOBALS['strPwdRecEmailNotFound'] = "Adresse e-mail non trouvée";
 $GLOBALS['strPwdRecWrongId'] = "ID erroné";
 $GLOBALS['strPwdRecEnterEmail'] = "Entrez votre adresse e-mail ci-dessous";
 $GLOBALS['strPwdRecEnterPassword'] = "Entrez votre nouveau mot de passe ci-dessous";
@@ -900,8 +874,6 @@ $GLOBALS['strCampaignNoDataTimeSpan'] = "Aucune campagne n'a démarré ou termin
 $GLOBALS['strCampaignAuditTrailSetup'] = "Activer la piste d'audit pour commencer à afficher les campagnes";
 
 $GLOBALS['strUnsavedChanges'] = "Vous n'avez pas sauvé les modifications de cette page, assurez-vous de cliquez sur \"Sauver les changements\" quand vous aurez terminé";
-$GLOBALS['strDeliveryLimitationsDisagree'] = "ATTENTION : Les limitations du moteur de distribution <strong>NE SONT PAS EN ACCORD</strong> avec les limitations affichées ci-dessous<br />Veuillez cliquer sur sauver les changements pour mettre à jour les règles du moteur de distribution";
-$GLOBALS['strDeliveryLimitationsInputErrors'] = "Certaines des limitations de distribution rapportent des valeurs incorrectes :";
 
 //confirmation messages
 $GLOBALS['strYouAreNowWorkingAsX'] = "Vous travaillez maintenant en tant que <b>%s</b>";
@@ -962,19 +934,12 @@ $GLOBALS['strZoneLinkedCampaign'] = "La campagne a été liée à la zone <a hre
 $GLOBALS['strZoneRemovedBanner'] = "La bannière a été déliée de la zone <a href='%s'>%s</a>";
 $GLOBALS['strZoneRemovedCampaign'] = "La campagne a été déliée de la zone <a href='%s'>%s</a>";
 
-$GLOBALS['strChannelHasBeenAdded'] = "Le canal ciblé <a href='%s'>%s</a> a été ajouté, <a href='%s'>changer les options de distribution</a>";
-$GLOBALS['strChannelHasBeenUpdated'] = "Le canal ciblé <a href='%s'>%s</a> a été mis à jour";
-$GLOBALS['strChannelAclHasBeenUpdated'] = "Les options de distribution pour le canal ciblé <a href='%s'>%s</a> ont été mises à jour";
-$GLOBALS['strChannelHasBeenDeleted'] = "Le canal ciblé <b>%s</b> a été supprimé";
-$GLOBALS['strChannelsHaveBeenDeleted'] = "Tous les canaux ciblés sélectionnés ont été supprimés";
-$GLOBALS['strChannelHasBeenDuplicated'] = "Le canal ciblé <a href='%s'>%s</a> a été copié vers <a href='%s'>%s</a>";
 
 $GLOBALS['strUserPreferencesUpdated'] = "Vos <b>%s</b> préferences ont été mises à jour";
 $GLOBALS['strEmailChanged'] = "Votre e-mail a été changé";
 $GLOBALS['strPasswordChanged'] = "Votre mot de passe a été changé";
 $GLOBALS['strXPreferencesHaveBeenUpdated'] = "<b>%s</b> a été mis à jour";
 $GLOBALS['strXSettingsHaveBeenUpdated'] = "<b>%s</b> a été mis à jour";
-$GLOBALS['strTZPreferencesWarning'] = "Cependant l'activation et l'échéance de la campagne n'ont pas été mises à jour, les limites horaires non plus.<br />Il vous faudra les mettre à jour à la main si vous souhaitez les concorder avec le nouveau fuseau horaire";
 
 // Report error messages
 

@@ -494,14 +494,17 @@ class DB_DataObjectCommon extends DB_DataObject
             $basename = $this->$columnName;
         }
 
+        // Get existing names as array keys
         $doCheck = $this->factory($this->_tableName);
-        $names = $doCheck->getUniqueValuesFromColumn($columnName);
+        $names = array_flip($doCheck->getUniqueValuesFromColumn($columnName));
+
         // Get unique name
         $i = 2;
-        while (in_array($basename.' ('.$i.')', $names)) {
-            $i++;
-        }
-        return $basename.' ('.$i.')';
+        do {
+            $name = $basename.' ('.$i++.')';
+        } while (isset($names[$name]));
+
+        return $name;
     }
 
     /**
@@ -888,6 +891,11 @@ class DB_DataObjectCommon extends DB_DataObject
 
     function _mergeIniFiles($aFiles)
     {
+        if (empty($aFiles)) {
+            $this->debug("Empty parameter supplied to _mergeIniFiles","databaseStructure",1);
+            return false;
+        }
+
         $aResult = array();
         foreach ($aFiles as $ini)
         {
@@ -1549,7 +1557,11 @@ class DB_DataObjectCommon extends DB_DataObject
      */
     function audit($actionid, $oDataObject = null, $parentid = null)
     {
-        if (OA::getConfigOption('audit', 'enabled', false))
+        $audit = false;
+        if (isset($GLOBALS['_MAX']['CONF']['audit']['enabled'])) {
+            $audit = $GLOBALS['_MAX']['CONF']['audit']['enabled'];
+        }
+        if ($audit)
         {
             if ($this->_auditEnabled())
             {
